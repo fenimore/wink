@@ -1,8 +1,48 @@
-  img {
+h1 {
+  color: white;
+}
+body {
+  background-color: black;
+} 
+a, a:hover {
+  color: white;
+}
+img {
   max-height: 600px;
-  }
+}
   .title {
     color: #52ADDA;
     font-family: monospace;
     text-decoration: none;
   }   
+  
+  .photo-index {
+    font-size: 17px;
+  }
+  
+  .nav-control {
+    font-size: 30px;
+   }
+   
+   .text-muted {
+    margin:15px;
+   }
+   
+   
+   /* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+}

@@ -20,21 +20,25 @@
     <div class="col-md-12">
     <h1>Welcome</h1>
 <?php
-$dirname = "images/";
 $galleries = array_filter(glob('media/*'), 'is_dir');
 $reverted = new ArrayIterator(array_reverse($galleries));
 echo "Albums:";
-echo '<ul class="list-unstyled">';
+echo '<ul class="photo-index list-unstyled">';
 foreach($reverted as $gallery) {
     $gallery = substr($gallery, 6);
     echo '<li><a href=gallery.php?gallery='.$gallery.' > '. ucfirst($gallery) .' </a> </li>';
     }
 echo '</ul>'
 ?>
-<a href=login.php>upload</a>
     </div>
   </div>
 </div>
+
+<footer class="footer">
+  <div class="container">
+    <p class="text-muted"><a href="http://another.workingagenda.com">Fenimore Love</a> | <a href=admin.php><span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span></a> | <a href="https://github.com/polypmer/wink">Source Code</a></p>
+  </div>
+</footer>
 
 </body>
 </html>
