@@ -7,3 +7,10 @@ for file in *.JPG; do
     mv "$file" "`basename $file .JPG`.jpg"
 done
 ```
+
+###TODO
+- Errors
+- Genre/Subfolders
+- select for directory uploads
+- Not really safe, is it?
+    - make uploads and deletion/creation directories safe
