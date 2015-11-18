@@ -13,7 +13,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    	<link rel="stylesheet" href="style.css" type="text/css" media="screen"/>
+    	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen"/>
   <style> 
   </style>
 </head>

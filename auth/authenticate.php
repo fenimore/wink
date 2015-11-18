@@ -11,7 +11,7 @@ if ( !empty($_POST) ) {
       session_start();
       $_SESSION['loggedin'] = true;
       header('Location: admin.php');
-      //die();
+      die();
     } else {
       header('Location: login.php');
       echo 'not authenticated';

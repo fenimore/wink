@@ -21,6 +21,11 @@ a, a:hover {
   height: auto;
 }
 
+.pssword {
+    background: transparent;
+    border: medium 0;
+}
+
 
   .title {
     color: #52ADDA;

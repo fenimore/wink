@@ -20,7 +20,7 @@ if(isset($_SESSION['loggedin'])){
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="style.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen"/>
 </head>
 <body>
 
@@ -30,8 +30,8 @@ if(isset($_SESSION['loggedin'])){
       <form class="form-inline" action="authenticate.php" method="post">
         <div class=form-group">
         <label for="pssword" style="display:none;">Password: </label>
-        <input class="form-control" type="password" name="password">
-        <button class="btn btn-default" type="submit">login
+        <input class="pssword form-control" type="password" name="password" autofocus>
+        <button class="pssword btn btn-default" type="submit">login
         </button>
         </div>
       </form>
@@ -39,7 +39,7 @@ if(isset($_SESSION['loggedin'])){
   </div>
   <div class="row">
   <hr>
-  <a href=index.php><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Index</a>
+  <a href=../index.php><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Index</a>
   </div>
 </div>
 </body>
