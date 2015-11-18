@@ -1,0 +1,10 @@
+# Rewrites
+RewriteEngine On
+RewriteRule    ^gallery/(.*)/?$    gallery.php?gallery=$1    [NC,L]    # Handle product requests
+RewriteRule    ^thumbnails/(.*)/?$    thumbnail.php?gallery=$1    [NC,L]    # Handle product requests
+
+# Cache media files
+<filesMatch "\.(gif|jpg|jpeg|png|ico|swf|js)$">
+Header set Cache-Control "max-age=2592000, public"
+</filesMatch>
+
