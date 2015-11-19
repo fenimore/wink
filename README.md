@@ -17,6 +17,7 @@ done
 ```
 
 ###TODO
+- Favicon
 - Errors reports
     - login/password
     - uploads
