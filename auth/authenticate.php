@@ -7,7 +7,7 @@ if ( !empty($_POST) ) {
     
     // tmp password is "Hello"
     // Put hashed Pass here
-    if( md5($password) == "8b1a9953c4611296a827abf8c47804d7"){
+    if( md5($password) == "907e131eb3bf6f21292fa1ed16e8b60c"){
       session_start();
       $_SESSION['loggedin'] = true;
       header('Location: admin.php');
