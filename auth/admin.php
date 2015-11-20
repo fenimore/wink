@@ -6,6 +6,8 @@ if(!isset($_SESSION['loggedin'])){
     echo "welcome";
 }
 
+$galleries = array_filter(glob('../media/*'), 'is_dir');
+$reverted = new ArrayIterator(array_reverse($galleries));
 
 ?>
 
@@ -39,11 +41,21 @@ if(!isset($_SESSION['loggedin'])){
     </div>
     <div class="col-md-4">
       <h1>Upload</h1>
-      <form action="../rest/upload.php" method="post" enctype="multipart/form-data">
+      <form action="../rest/upload.php" method="post" enctype="multipart/form-data" id="uploadform">
         <label for="photos">Select Photographs: </label>
         <input class="btn btn-default" type="file" name="files[]" multiple>
+        
+        <select class="form-control" form="uploadform" name="path">
+          <option value="fakepath">doesnt work</option>
+          <?php
+            foreach($reverted as $gallery) {
+              $gallery = substr($gallery, 9);
+              echo '<option value="'.$gallery.' ">';
+              echo ucfirst($gallery) . '</option>';
+            }
+          ?>
+        </select>
         <label for="photos">Directory: </label>
-        <!-- Make SELECT with PHP array -->
         <input class="form-control" type="text" name="dirname" placeholder="Which directory?"><br>
         <input class="btn btn-success" type="submit" value="Upload Images">
       </form>

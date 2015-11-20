@@ -37,7 +37,7 @@
   else {
     $dirname = "media/";
     $dirname = $dirname . '/' . $gallery . '/';
-    $images = glob($dirname."*.[jJ][pP][gG]"); //only jpg?
+    $images = glob($dirname."*.{[jJ][pP][gG],gif,jpeg,svg,bmp,png}", GLOB_BRACE); //only jpg?
     //GLOB_BRACE not necessary?
     echo '<div class="col-md-8">';
     echo '  <div id="slider" height="600px">';

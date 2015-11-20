@@ -7,7 +7,8 @@ $directoryerr = "directory already exists";
     
     extract($_POST); //What even does this doo...
     $dirname = $_POST['dirname'];
-    $dir = '../media/' . $dirname;
+    $path = $_POST['path'];
+    $dir = '../media/' . $path;
     $extension=array("jpeg","jpg","png","gif");
     
     if( is_dir($dir)) {
@@ -50,5 +51,9 @@ Different kinds of errors:
 not jpg (TODO)
 too big of file (TODO)
 file exists (TODO)
+<?php
+echo '<br>Directory:' . $dirname;
+echo '<br>Path:' . $path;
+?>
 </body>
 </html>
