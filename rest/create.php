@@ -2,12 +2,13 @@
   $directoryerr = "directory already exists";
 
   if ( !empty($_POST) ) {
-    $dirname = $_POST['dirname'];
-    $dir = '../media/' . $dirname; // change (carefully) to $path
+    $category = $_POST['category'];
+    $dirname = $_POST['gallery'];
+    $path = '../media/' . $category . '/' . $dirname;
     
     
-    if(!is_dir($dir)) {
-      mkdir($dir);
+    if(!is_dir($path)) {
+      mkdir($path);
       header("Location: ../index.php");
     } else {
       echo '<script type="text/javascript">alert("'. $directoryerr . '" );</script>';

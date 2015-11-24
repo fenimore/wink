@@ -3,27 +3,32 @@
 $directoryerr = "directory already exists";
 
   if ( !empty($_POST) ) {
-    $error=array();// I should use this?
-    
+    // NULLE!
+   
     extract($_POST); //What even does this doo...
-    $dirname = $_POST['dirname'];
-    $path = $_POST['path'];
-    $dir = '../media/' . $path;
+    $category = $_POST['category'];
+    $dirname = $_POST['gallery'];
+    $path = '../media/' . '/'. $category . '/' . $dirname;
     $extension=array("jpeg","jpg","png","gif");
     
-    if( is_dir($dir)) {
-      // Then save Files
+    if( is_dir($path)) {
       foreach($_FILES["files"]["name"] as $key=>$tmp_name){
         $file_name=$_FILES["files"]["name"][$key];
         $file_tmp=$_FILES["files"]["tmp_name"][$key];
         $ext=pathinfo($file_name,PATHINFO_EXTENSION);
         if(in_array($ext,$extension)){
-          if(!file_exists($dir."/".$file_name)){
-            move_uploaded_file($file_tmp=$_FILES["files"]["tmp_name"][$key], $dir."/".$file_name);
+          if(!file_exists($path."/".$file_name)){
+            move_uploaded_file($file_tmp=$_FILES["files"]["tmp_name"][$key], $path."/".$file_name);
+          } else {
+            $error = "duplicates, change file name";
           }
+        } else {
+          $error = "extensions are no good";
         }
       }
       header("Location: ../gallery.php?gallery=" . $dirname);
+    } else {
+      $error = "this is not a directory";
     }  
   }
 
@@ -54,6 +59,10 @@ file exists (TODO)
 <?php
 echo '<br>Directory:' . $dirname;
 echo '<br>Path:' . $path;
+echo '<br>' . $error_duplicate;
+echo '<br>' . $error_filesize;
+echo '<br>' . $error_extension;
+echo '<br>' .   $error_path;
 ?>
 </body>
 </html>

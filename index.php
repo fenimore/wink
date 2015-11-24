@@ -22,17 +22,24 @@
     <div class="col-md-12">
     <br>
 <?php
-// Film Galleries
-$galleries = array_filter(glob('media/*'), 'is_dir');
-$reverted = new ArrayIterator(array_reverse($galleries));
-echo "argentique:";
-echo "<br><small>full | individual</small>";
-echo '<ul class="photo-index list-unstyled">';
-foreach($reverted as $gallery) {
-    $gallery = substr($gallery, 6);
-    echo '<li><a href=thumbnail.php?gallery='.$gallery.' ><span class="glyphicon glyphicon-th" aria-hidden="true"></span></a> | <a href=gallery.php?gallery='.$gallery.' > '. ucfirst($gallery) .' </a></li>';
+// Categories
+$categories = array_filter(glob('media/*'), 'is_dir');
+foreach($categories as $category){
+  $cat = substr($category, 6);
+  echo '<h3>'. $cat . '</h3>'; // category header
+  $galleries = array_filter(glob($category . '/*'), 'is_dir');
+  //for each gallery list the gallery
+  echo '<ul class="photo-index list-unstyled">';
+    foreach($galleries as $gallery){
+      $excess = strlen($category) + 1;
+      $gall = substr($gallery, strlen($category) + 1);
+      echo '<li><a href=thumbnail.php?gallery='.$gall.'>';
+      echo '<span class="glyphicon glyphicon-th" aria-hidden="true">';
+      echo '</span></a> | <a href=gallery.php?gallery=' . $gall .' >';
+      echo ucfirst($gall) .' </a></li>';
     }
-echo '</ul>'
+  echo '</ul>';
+}
 // Add another set of gallery
 
 ?>
