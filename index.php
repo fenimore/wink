@@ -29,16 +29,17 @@ foreach($categories as $category){
   echo  $cat; // category header, make h3???
   echo "<br><small>full | individual</small>";
   $galleries = array_filter(glob($category . '/*'), 'is_dir');
+  $galleries = new ArrayIterator(array_reverse($galleries));
   //for each gallery list the gallery
   echo '<ul class="photo-index list-unstyled">';
-    foreach($galleries as $gallery){
-      $gall = substr($gallery, strlen($category) + 1);
-      echo '<li><a href=thumbnail.php?category=' . $cat . '&gallery='.$gall.'>';
-      echo '<span class="glyphicon glyphicon-th-large" aria-hidden="true">';
-      echo '</span></a> | <a href=gallery.php?category=' . $cat;
-      echo '&gallery=' . $gall .' >';
-      echo ucfirst($gall) .' </a></li>';
-    }
+  foreach($galleries as $gallery){
+    $gall = substr($gallery, strlen($category) + 1);
+    echo '<li><a href=thumbnail.php?category=' . $cat . '&gallery='.$gall.'>';
+    echo '<span class="glyphicon glyphicon-th-large" aria-hidden="true">';
+    echo '</span></a> | <a href=gallery.php?category=' . $cat;
+    echo '&gallery=' . $gall .' >';
+    echo ucfirst($gall) .' </a></li>';
+  }
   echo '</ul>';
 }
 // Add another set of gallery

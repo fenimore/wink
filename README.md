@@ -24,14 +24,12 @@ done
         - size
         - ext
     - delete & create
-- Add pgn/gif support
-- Genre/Subfolders
-- htaugh
+- hta-ugh
 - Prev and Next should be larger buttons
-- SELECT input for directory uploads
 - Not really safe, is it?
     - make uploads and deletion/creation directories safe
 - Screenshots
+- Contact and About Page
     
 ###Uses
 - Bootstrap
