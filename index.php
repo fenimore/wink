@@ -26,15 +26,15 @@
 $categories = array_filter(glob('media/*'), 'is_dir');
 foreach($categories as $category){
   $cat = substr($category, 6);
-  echo '<h3>'. $cat . '</h3>'; // category header
+  echo  $cat; // category header, make h3???
+  echo "<br><small>full | individual</small>";
   $galleries = array_filter(glob($category . '/*'), 'is_dir');
   //for each gallery list the gallery
   echo '<ul class="photo-index list-unstyled">';
     foreach($galleries as $gallery){
-      $excess = strlen($category) + 1;
       $gall = substr($gallery, strlen($category) + 1);
-      echo '<li><a href=thumbnail.php?gallery='.$gall.'>';
-      echo '<span class="glyphicon glyphicon-th" aria-hidden="true">';
+      echo '<li><a href=thumbnail.php?category=' . $cat . '&gallery='.$gall.'>';
+      echo '<span class="glyphicon glyphicon-th-large" aria-hidden="true">';
       echo '</span></a> | <a href=gallery.php?category=' . $cat;
       echo '&gallery=' . $gall .' >';
       echo ucfirst($gall) .' </a></li>';

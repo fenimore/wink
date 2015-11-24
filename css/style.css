@@ -4,8 +4,12 @@ h1 {
 body {
   background-color: black;
 } 
-a, a:hover {
+a {
   color: white;
+}
+a:hover {
+  color: #00CC99 ;
+  text-decoration: none;
 }
 #slider img {
   max-height: 600px;

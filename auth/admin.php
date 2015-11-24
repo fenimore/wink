@@ -6,9 +6,7 @@ if(!isset($_SESSION['loggedin'])){
     echo "welcome";
 }
 
-$galleries = array_filter(glob('../media/*'), 'is_dir');
-$reverted = new ArrayIterator(array_reverse($galleries));
-
+$categories = array_filter(glob('../media/*'), 'is_dir');
 ?>
 
 <!DOCTYPE html>
@@ -30,57 +28,73 @@ $reverted = new ArrayIterator(array_reverse($galleries));
 
 <div class="container">
   <div class="row" style="margin-top:10%">
-    <div class="col-md-3">
+    <div class="col-md-4">
       <h1>New Category</h1>
       <form action="../rest/create_category.php" method="post" enctype="multipart/form-data" id="catform">
-        <label for="photos">Directory: </label>
-        <input class="form-control" type="text" name="category" placeholder="Which directory?"><br>
+        <label for="photos">Gallery: </label>
+        <input class="form-control" type="text" name="category" placeholder="Category Name - Lower Case, No Spaces"><br>
         <input class="btn btn-success" type="submit" value="Create Category">
       </form>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <h1>Create Gallery</h1>
       <form action="../rest/create.php" method="post">
-        <label for="photos">Category: </label>
-        <input class="form-control" type="text" name="category" placeholder="Which Category?"><br>
-        <label for="dirname">Directory name: </label>
-        <input class="form-control" type="text" name="gallery">
+        <label for="photos">Category : </label>
+        <input class="form-control" type="text" name="category"
+        placeholder="Category Name - Must Already Exist"><br>
+        <label for="dirname">Gallery : </label>
+        <input class="form-control" type="text" name="gallery"
+        placeholder="Gallery Name - Lower Case, No Spaces">
         <br>
-        <input class="btn btn-success" type="submit" value="New Directory">
+        <input class="btn btn-success" type="submit" value="Create Gallery">
       </form>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <h1>Upload</h1>
       <form action="../rest/upload.php" method="post" enctype="multipart/form-data" id="uploadform">
         <label for="photos">Select Photographs: </label>
-        <input class="btn btn-default" type="file" name="files[]" multiple>
-        
+        <input class="btn btn-default" type="file" name="files[]" multiple><br>
         <select class="form-control" form="uploadform" name="fakepath">
           <option value="fakepath">doesnt work</option>
           <?php
-            foreach($reverted as $gallery) {
-              $gallery = substr($gallery, 9);
-              echo '<option value="'.$gallery.' ">';
-              echo ucfirst($gallery) . '</option>';
+            foreach($categories as $category) {
+              $cat = substr($category, 9);
+              echo '<option value="'.$cat.' ">';
+              echo ucfirst($cat) . '</option>';
             }
           ?>
         </select>
-        <label for="photos">Category: </label>
-        <input class="form-control" type="text" name="category" placeholder="Which Category?"><br>
-        <label for="photos">Gallery: </label>
-        <input class="form-control" type="text" name="gallery" placeholder="Which directory?"><br>
+        <label for="photos">Category : </label>
+        <input class="form-control" type="text" name="category" placeholder="Category Name - Must Already Exist"><br>
+        <label for="photos">Gallery : </label>
+        <input class="form-control" type="text" name="gallery" placeholder="Gallery Name - Must Already Exist"><br>
         <input class="btn btn-success" type="submit" value="Upload Images">
       </form>
     </div>
-    <div class="col-md-3">
-      <h1>Delete Directory</h1>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <h1>Delete Category</h1>
       <form action="../rest/delete.php" method="post">
-        <label for="dirname">Directory name: </label>
-        <input class="form-control" type="text" name="dirname">
+        <label for="category">Category : </label>
+        <input class="form-control" type="text" name="category" placeholder="This cannot be undone">
         <br>
         <input class="btn btn-danger" type="submit" value="Delete Directory!">
       </form>
     </div>
+    <div class="col-md-4">
+      <h1>Delete Gallery</h1>
+      <form action="../rest/delete.php" method="post">
+        <label for="category">Category : </label>
+        <input class="form-control" type="text" name="category" placeholder="This cannot be undone">
+        <br>
+        <label for="gallery">Gallery : </label>
+        <input class="form-control" type="text" name="gallery" placeholder="This cannot be undone">
+        <br>
+        <input class="btn btn-danger" type="submit" value="Delete Directory!">
+      </form>
+    </div>
+
   </div>
   <div class="row">
   <hr>

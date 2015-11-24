@@ -4,7 +4,6 @@ $directoryerr = "directory already exists";
 
   if ( !empty($_POST) ) {
     // NULLE!
-   
     extract($_POST); //What even does this doo...
     $category = $_POST['category'];
     $dirname = $_POST['gallery'];
@@ -26,7 +25,7 @@ $directoryerr = "directory already exists";
           $error = "extensions are no good";
         }
       }
-      header("Location: ../gallery.php?gallery=" . $dirname);
+      header("Location: ../gallery.php?category=" . $category ."&gallery=" . $dirname);
     } else {
       $error = "this is not a directory";
     }  

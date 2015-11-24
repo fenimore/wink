@@ -24,18 +24,18 @@
   <div class="row text-center">
 <?php
     $gallery = null;
+    $category = null;
 	if ( !empty($_GET['gallery'])) {
 		$gallery = $_REQUEST['gallery'];
+		$category = $_REQUEST['category'];
 	}
 	echo '<h1 class="title"> <a href=index.php>'. ucfirst($gallery) .'</a></h1>';
-  if(null==$gallery) {
+  if(null==$gallery or null==$category) {
     header("Location: index.php");
   } 
   else {
-    $dirname = "media/";
-    $dirname = $dirname . '/' . $gallery . '/';
-    $images = glob($dirname."*.[jJ][pP][gG]"); //only jpg?
-    //GLOB_BRACE not necessary?
+    $path = 'media/'. $category . '/' . $gallery . '/';
+    $images = glob($path."*.{[jJ][pP][gG],gif,jpeg,svg,bmp,png}", GLOB_BRACE);
     echo '<div class="col-md-9">';
     foreach($images as $image) {
       echo '  <img src="'. $image.'" alt="" width="300px" height="auto" class="img-responsive wink">';
