@@ -35,7 +35,8 @@ foreach($categories as $category){
       $gall = substr($gallery, strlen($category) + 1);
       echo '<li><a href=thumbnail.php?gallery='.$gall.'>';
       echo '<span class="glyphicon glyphicon-th" aria-hidden="true">';
-      echo '</span></a> | <a href=gallery.php?gallery=' . $gall .' >';
+      echo '</span></a> | <a href=gallery.php?category=' . $cat;
+      echo '&gallery=' . $gall .' >';
       echo ucfirst($gall) .' </a></li>';
     }
   echo '</ul>';

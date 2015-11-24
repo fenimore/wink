@@ -26,19 +26,18 @@
   $gallery = null;
 	if ( !empty($_GET['gallery'])) {
 		$gallery = $_REQUEST['gallery'];
+		$category = $_REQUEST['category'];
 	}
 	echo '<h1 class="title"> <a href=index.php>'. ucfirst($gallery) .'</a></h1>';
 	echo '<div class="col-md-1 col-md-offset-1">';
 	echo '<a href=# onclick="prevSlide()" class="nav-control"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>';
   echo '</div>';
-  if(null==$gallery) {
+  if(null==$gallery or null==$category) {
     header("Location: index.php");
   } 
   else {
-    $dirname = "media/";
-    $dirname = $dirname . '/' . $gallery . '/';
-    $images = glob($dirname."*.{[jJ][pP][gG],gif,jpeg,svg,bmp,png}", GLOB_BRACE); //only jpg?
-    //GLOB_BRACE not necessary?
+    $path = 'media/'. $category . '/' . $gallery . '/';
+    $images = glob($path."*.{[jJ][pP][gG],gif,jpeg,svg,bmp,png}", GLOB_BRACE);
     echo '<div class="col-md-8">';
     echo '  <div id="slider" height="600px">';
     foreach($images as $image) {
