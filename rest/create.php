@@ -3,9 +3,11 @@
 
   if ( !empty($_POST) ) {
     $category = $_POST['category'];
-    $dirname = $_POST['gallery'];
-    $path = '../media/' . $category . '/' . $dirname;
-    
+    $gallery = $_POST['gallery'];
+    $path = '../media/' . $category . '/' . $gallery;
+    //echo '<br><br>Category ' . $category;
+    //echo '<br><br>Gallery ' . $gallery;
+    //echo '<br><br>Path ' . $path;
     
     if(!is_dir($path)) {
       mkdir($path);

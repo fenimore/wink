@@ -38,10 +38,17 @@ $categories = array_filter(glob('../media/*'), 'is_dir');
     </div>
     <div class="col-md-4">
       <h1>Create Gallery</h1>
-      <form action="../rest/create.php" method="post">
+      <form action="../rest/create.php" id="galleryform" method="post">
         <label for="photos">Category : </label>
-        <input class="form-control" type="text" name="category"
-        placeholder="Category Name - Must Already Exist"><br>
+        <select class="form-control" form="galleryform" name="category">
+          <?php
+            foreach($categories as $category) {
+              $cat = substr($category, 9);
+              echo '<option value="'.$cat.'">';
+              echo ucfirst($cat) . '</option>';
+            }
+          ?>
+        </select><br>
         <label for="dirname">Gallery : </label>
         <input class="form-control" type="text" name="gallery"
         placeholder="Gallery Name - Lower Case, No Spaces">
@@ -54,18 +61,16 @@ $categories = array_filter(glob('../media/*'), 'is_dir');
       <form action="../rest/upload.php" method="post" enctype="multipart/form-data" id="uploadform">
         <label for="photos">Select Photographs: </label>
         <input class="btn btn-default" type="file" name="files[]" multiple><br>
-        <select class="form-control" form="uploadform" name="fakepath">
-          <option value="fakepath">doesnt work</option>
+        <label for="photos">Category : </label>
+        <select class="form-control" form="uploadform" name="category">
           <?php
             foreach($categories as $category) {
               $cat = substr($category, 9);
-              echo '<option value="'.$cat.' ">';
+              echo '<option value="'.$cat.'">';
               echo ucfirst($cat) . '</option>';
             }
           ?>
-        </select>
-        <label for="photos">Category : </label>
-        <input class="form-control" type="text" name="category" placeholder="Category Name - Must Already Exist"><br>
+        </select><br>
         <label for="photos">Gallery : </label>
         <input class="form-control" type="text" name="gallery" placeholder="Gallery Name - Must Already Exist"><br>
         <input class="btn btn-success" type="submit" value="Upload Images">
