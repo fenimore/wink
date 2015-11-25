@@ -1,5 +1,8 @@
 #Wink
-A very simple flat file photo gallery
+A very simple flat file photo gallery. Because this is a flat file cms there are not a lot of ways of including information for the images.
+
+## Titles
+The categories and galleries are directories, with '_' and '-' replaced by spaces. The image titles are the filenames likewise stripped of '_' and '-'.
 
 ##Sorting
 Galleries are indexed in reverse alphabetical order, so if album title is the date, the most recent will be on top.
@@ -29,8 +32,9 @@ done
 - Not really safe, is it?
     - make uploads and deletion/creation directories safe
 - Screenshots
-- Contact and About Page
+- Contact/About Page
+- slick(er) admin dashboard
     
-###Uses
-- Bootstrap
-- PHP
+###Dependencies
+- Bootstrap (CDN)
+- PHP (5.4/5.2? I'm not sure)

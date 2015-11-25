@@ -7,6 +7,7 @@
     <meta name="description" content="Photo Gallery">
     <meta name="keywords" content="PHP, Photography">
     <meta name="author" content="Fenimore">
+    <link rel="icon" href="favicon.ico">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- jQuery library -->

@@ -27,9 +27,12 @@ a:hover {
 
 .pssword {
     background: transparent;
-    border: medium 0;
+    border: 0;
 }
 
+.admin-option {
+  display: none;
+}
 
   .title {
     color: #52ADDA;

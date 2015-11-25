@@ -7,6 +7,7 @@
     <meta name="description" content="Photo Gallery">
     <meta name="keywords" content="PHP, Photography">
     <meta name="author" content="Fenimore">
+    <link rel="icon" href="favicon.ico">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- jQuery library -->
@@ -23,22 +24,25 @@
     <br>
 <?php
 // Categories
+$spaces = array("-", "_");
 $categories = array_filter(glob('media/*'), 'is_dir');
 foreach($categories as $category){
   $cat = substr($category, 6);
   echo  $cat; // category header, make h3???
-  echo "<br><small>full | individual</small>";
+  echo "<br><small>full  | individual</small>";
   $galleries = array_filter(glob($category . '/*'), 'is_dir');
   $galleries = new ArrayIterator(array_reverse($galleries));
+  // Reverse order so that most recent are on top
   //for each gallery list the gallery
   echo '<ul class="photo-index list-unstyled">';
   foreach($galleries as $gallery){
-    $gall = substr($gallery, strlen($category) + 1);
+    $gall = substr($gallery, strlen($category) + 1); // strip path
+    $gall = str_replace($spaces, " ", $gall); // - and _ are spaces
     echo '<li><a href=thumbnail.php?category=' . $cat . '&gallery='.$gall.'>';
     echo '<span class="glyphicon glyphicon-th-large" aria-hidden="true">';
     echo '</span></a> | <a href=gallery.php?category=' . $cat;
     echo '&gallery=' . $gall .' >';
-    echo ucfirst($gall) .' </a></li>';
+    echo ucfirst($gall) .' </a></li>'; // Capitalize the Gallery?
   }
   echo '</ul>';
 }
