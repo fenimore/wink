@@ -3,6 +3,7 @@ h1 {
 }
 body {
   background-color: black;
+  font-family: 'Josefin Sans', sans-serif;
 } 
 a {
   color: white;
@@ -28,10 +29,6 @@ a:hover {
 .pssword {
     background: transparent;
     border: 0;
-}
-
-.admin-option {
-  display: none;
 }
 
   .title {

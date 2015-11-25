@@ -11,7 +11,8 @@
     
     if(!is_dir($path)) {
       mkdir($path);
-      header("Location: ../index.php");
+      header("Location: ../auth/admin.php");
+      echo 'created gallery ' . $gallery;
     } else {
       echo '<script type="text/javascript">alert("'. $directoryerr . '" );</script>';
     }

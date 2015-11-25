@@ -8,6 +8,7 @@
     <meta name="keywords" content="PHP, Photography">
     <meta name="author" content="Fenimore">
     <link rel="icon" href="favicon.ico">
+    <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- jQuery library -->
@@ -26,13 +27,15 @@
 <?php
     $gallery = null;
     $category = null;
+    $spaces = array("-", "_");
 	if ( !empty($_GET['gallery'])) {
 		$gallery = $_REQUEST['gallery'];
 		$category = $_REQUEST['category'];
 	}
-	echo '<h1 class="title"> <a href=index.php>'. ucfirst($gallery) .'</a></h1>';
+	$gallerytitle = str_replace($spaces, " ", $gallery);
+	echo '<h1 class="title"> <a href=index.php>'. ucfirst($gallerytitle) .'</a></h1>';
   if(null==$gallery or null==$category) {
-    header("Location: index.php");
+    echo 'ERROR: gallery and/or category parameters not specified.';
   } 
   else {
     $path = 'media/'. $category . '/' . $gallery . '/';
