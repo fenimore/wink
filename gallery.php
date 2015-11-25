@@ -43,13 +43,15 @@
     echo '<div class="col-md-8">';
     echo '  <div id="slider" height="600px">';
     foreach($images as $image) {
-      echo '  <img src="'. $image.'" alt="" width="auto" height="auto" class="img-responsive center-block" style="display:none;">';
-      echo '<br><br>';
-      //$pathlength = strlen($category) + strlen($gallery) + 8;
-      //$title = substr($image, $pathlength);
       $image_paths = pathinfo($image);
       $title = str_replace($spaces, " ", $image_paths['filename']);
-      echo '<div class="image-title">' . $title . '</div>';
+      echo '<div style="display:none;">';
+      echo '<img src="'. $image.'" alt="" width="auto" height="auto" class="img-responsive center-block" >';
+      echo '<br><div class="image-title">' . $title . '</div>';
+      echo '</div>';
+      //echo '<br><br>';
+      //$pathlength = strlen($category) + strlen($gallery) + 8;
+      //$title = substr($image, $pathlength);
     }
     echo '  </div>'; // Slider
     echo '</div>'; // Col
@@ -62,15 +64,15 @@
 </div><!-- Container -->
 <script type="text/javascript">
     $(document).ready(function() {
-      $('#slider img:first-child').addClass('active').show();
+      $('#slider div:first-child').addClass('active').show();
     });
 
       function nextSlide() {
           console.log('next');
-          var $active = $('div#slider IMG.active');
-          var $next = $active.next();  
+          var $active = $('div#slider DIV.active');
+          var $next = $active.next();
           if($active.is(':last-child')){
-            $next = $('#slider img:first-child');
+            $next = $('#slider div:first-child');
           }  
           $next.addClass('active');
           $next.show();

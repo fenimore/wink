@@ -37,12 +37,12 @@ foreach($categories as $category){
   echo '<ul class="photo-index list-unstyled">';
   foreach($galleries as $gallery){
     $gall = substr($gallery, strlen($category) + 1); // strip path
-    $gall = str_replace($spaces, " ", $gall); // - and _ are spaces
+    $gallerytitle = str_replace($spaces, " ", $gall); // - and _ are spaces
     echo '<li><a href=thumbnail.php?category=' . $cat . '&gallery='.$gall.'>';
     echo '<span class="glyphicon glyphicon-th-large" aria-hidden="true">';
     echo '</span></a> | <a href=gallery.php?category=' . $cat;
     echo '&gallery=' . $gall .' >';
-    echo ucfirst($gall) .' </a></li>'; // Capitalize the Gallery?
+    echo ucfirst($gallerytitle) .' </a></li>'; // Capitalize the Gallery?
   }
   echo '</ul>';
 }
