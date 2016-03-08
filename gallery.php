@@ -35,6 +35,10 @@
 	echo '<h1 class="title"> <a href=index.php>'. ucfirst($gallerytitle) .'</a></h1>';
 	echo '<div class="col-md-1 col-md-offset-1">';
 	echo '<a href=# onclick="prevSlide()" class="nav-control"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>';
+	echo '<br><br>';
+	echo '<a href="index.php" class="nav-control"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>';
+	echo '<br>';
+    echo '<a href=# class="nav-control"><span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span></a>';
   echo '</div>';
   if(null==$gallery or null==$category) {
     echo 'ERROR: gallery and/or category parameters not specified.';
@@ -86,7 +90,7 @@
           var $active = $('div#slider DIV.active'); 
           var $prev = $active.prev();    
           if($active.is(':first-child')){
-            $prev = $('#slider img:last-child');
+            $prev = $('#slider div:last-child');
           }
           $prev.addClass('active');
           $prev.show();
