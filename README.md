@@ -34,6 +34,7 @@ done
 - Screenshots
 - Contact/About Page
 - slick(er) admin dashboard
+- Download Zip file
     
 ####Dependencies
 - Bootstrap (CDN)
