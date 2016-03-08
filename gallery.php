@@ -82,7 +82,8 @@
           $active.removeClass('active');
       }
       function prevSlide() {
-          var $active = $('div#slider IMG.active');
+          console.log('next');
+          var $active = $('div#slider DIV.active'); 
           var $prev = $active.prev();    
           if($active.is(':first-child')){
             $prev = $('#slider img:last-child');
