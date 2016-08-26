@@ -1,6 +1,9 @@
 #Wink
 A very simple flat file photo gallery. Because this is a flat file cms there are not a lot of ways of including information for the images.
 
+## Set Up
+Super easy setup! Simply go into `auth/` and change the md5 hash to your desired password (the default is "hello", or 907e131eb3bf6f21292fa1ed16e8b60c MD5), and then upload the site files onto a server running PHP.
+
 ### Titles
 The categories and galleries are directories, with _ and - replaced by spaces. The image titles are the filenames likewise stripped of _ and -.
 
