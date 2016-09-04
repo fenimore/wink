@@ -38,6 +38,8 @@ done
 - Contact/About Page
 - slick(er) admin dashboard
 - Download Zip file
+- Add thumbnail creation to ease up load times with large images, yikes.
+  - See: [stackoverflow](http://stackoverflow.com/questions/11376315/creating-a-thumbnail-from-an-uploaded-image)
     
 ####Dependencies
 - Bootstrap (CDN)
