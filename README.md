@@ -1,5 +1,6 @@
-#Wink
-A very simple flat file photo gallery. Because this is a flat file cms there are not a lot of ways of including information for the images and so the filenames and directory names are used to sort.
+# Wink
+
+A simple flat file photo gallery.
 
 ## Set Up
 
