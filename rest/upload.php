@@ -7,18 +7,21 @@ if ( !empty($_POST) ) {
     extract($_POST); //What even does this doo...
     $category = $_POST['category'];
     $dirname = $_POST['gallery'];
-    $path = '../media/' . '/'. $category . '/' . $dirname;
+    $path = '../media' . '/'. $category . '/' . $dirname;
     $extension=array("jpeg","jpg","png","gif");
 
     if( is_dir($path)) {
         foreach($_FILES["files"]["name"] as $key=>$tmp_name){
             $file_name=$_FILES["files"]["name"][$key];
             $file_tmp=$_FILES["files"]["tmp_name"][$key];
+            $thumb_name="thumb_" . $file_name;
+            $thumb_path= $path."/".$thumb_name;
             $ext=pathinfo($file_name,PATHINFO_EXTENSION);
             // TODO: remove non-jpg from accepted ext?
             if(in_array($ext,$extension)){
                 if(!file_exists($path."/".$file_name)){
                     move_uploaded_file($_FILES["files"]["tmp_name"][$key], $path."/".$file_name);
+                    createThumbnail($file_tmp, $thumb_path);
                 } else {
                     $error = "duplicates, change file name";
                 }
@@ -54,7 +57,7 @@ if ( !empty($_POST) ) {
 <a href="../auth/admin.php">Return to Admin</a>
 <?php
 
-      if(isNotEmpty($error)) {
+      if(empty($error)) {
           echo '<br>ERRROR:' . $error;
       }
       echo '<br>Directory:' . $dirname;
