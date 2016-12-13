@@ -18,7 +18,7 @@ if ( !empty($_POST) ) {
             // TODO: remove non-jpg from accepted ext?
             if(in_array($ext,$extension)){
                 if(!file_exists($path."/".$file_name)){
-                    move_uploaded_file($file_tmp=$_FILES["files"]["tmp_name"][$key], $path."/".$file_name);
+                    move_uploaded_file($_FILES["files"]["tmp_name"][$key], $path."/".$file_name);
                 } else {
                     $error = "duplicates, change file name";
                 }
