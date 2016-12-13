@@ -4,7 +4,7 @@ A simple flat file photo gallery.
 
 ## Set Up
 
-Easy setup! Simply go into `auth/` and change the md5 hash to your desired password (the default is "hello", or `907e131eb3bf6f21292fa1ed16e8b60c` MD5), and then upload the site files onto a server running PHP. For thumbnails to work, one needs to enable to the php-gd extension in the php.ini.
+Easy setup! Simply go into `auth/` and change the md5 hash to your desired password (the default is "hello", or `907e131eb3bf6f21292fa1ed16e8b60c` MD5), and then upload the site files onto a server running PHP.
 
 ### Titles and Sorting
 
