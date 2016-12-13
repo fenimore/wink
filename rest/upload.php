@@ -1,6 +1,6 @@
 <?php
 // errors
-$directoryerr = "directory already exists";
+$error = "";
 
   if ( !empty($_POST) ) {
     // NULLE!
@@ -9,7 +9,7 @@ $directoryerr = "directory already exists";
     $dirname = $_POST['gallery'];
     $path = '../media/' . '/'. $category . '/' . $dirname;
     $extension=array("jpeg","jpg","png","gif");
-    
+
     if( is_dir($path)) {
       foreach($_FILES["files"]["name"] as $key=>$tmp_name){
         $file_name=$_FILES["files"]["name"][$key];
@@ -28,7 +28,7 @@ $directoryerr = "directory already exists";
       header("Location: ../gallery.php?category=" . $category ."&gallery=" . $dirname);
     } else {
       $error = "this is not a directory";
-    }  
+    }
   }
 
 ?>
@@ -47,21 +47,17 @@ $directoryerr = "directory already exists";
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    	<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen"/>
 </head>
 <body>
 <a href="../auth/admin.php">Return to Admin</a>
-Different kinds of errors:
-not jpg (TODO)
-too big of file (TODO)
-file exists (TODO)
 <?php
-echo '<br>Directory:' . $dirname;
-echo '<br>Path:' . $path;
-echo '<br>' . $error_duplicate;
-echo '<br>' . $error_filesize;
-echo '<br>' . $error_extension;
-echo '<br>' .   $error_path;
+
+      if(isNotEmpty($error)) {
+          echo '<br>ERRROR:' . $error;
+      }
+      echo '<br>Directory:' . $dirname;
+      echo '<br>Path:' . $path;
 ?>
 </body>
 </html>
