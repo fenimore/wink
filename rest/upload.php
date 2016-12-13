@@ -2,7 +2,7 @@
 // errors
 $error = "";
 
-  if ( !empty($_POST) ) {
+if ( !empty($_POST) ) {
     // NULLE!
     extract($_POST); //What even does this doo...
     $category = $_POST['category'];
@@ -11,25 +11,25 @@ $error = "";
     $extension=array("jpeg","jpg","png","gif");
 
     if( is_dir($path)) {
-      foreach($_FILES["files"]["name"] as $key=>$tmp_name){
-        $file_name=$_FILES["files"]["name"][$key];
-        $file_tmp=$_FILES["files"]["tmp_name"][$key];
-        $ext=pathinfo($file_name,PATHINFO_EXTENSION);
-        if(in_array($ext,$extension)){
-          if(!file_exists($path."/".$file_name)){
-            move_uploaded_file($file_tmp=$_FILES["files"]["tmp_name"][$key], $path."/".$file_name);
-          } else {
-            $error = "duplicates, change file name";
-          }
-        } else {
-          $error = "extensions are no good";
+        foreach($_FILES["files"]["name"] as $key=>$tmp_name){
+            $file_name=$_FILES["files"]["name"][$key];
+            $file_tmp=$_FILES["files"]["tmp_name"][$key];
+            $ext=pathinfo($file_name,PATHINFO_EXTENSION);
+            if(in_array($ext,$extension)){
+                if(!file_exists($path."/".$file_name)){
+                    move_uploaded_file($file_tmp=$_FILES["files"]["tmp_name"][$key], $path."/".$file_name);
+                } else {
+                    $error = "duplicates, change file name";
+                }
+            } else {
+                $error = "extensions are no good";
+            }
         }
-      }
-      header("Location: ../gallery.php?category=" . $category ."&gallery=" . $dirname);
+        header("Location: ../gallery.php?category=" . $category ."&gallery=" . $dirname);
     } else {
-      $error = "this is not a directory";
+        $error = "this is not a directory";
     }
-  }
+}
 
 ?>
 <!DOCTYPE html>
