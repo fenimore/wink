@@ -21,7 +21,7 @@ if ( !empty($_POST) ) {
             if(in_array($ext,$extension)){
                 if(!file_exists($path."/".$file_name)){
                     move_uploaded_file($_FILES["files"]["tmp_name"][$key], $path."/".$file_name);
-                    createThumbnail($file_tmp, $thumb_path);
+                    createThumbnail($path."/".$file_name, $thumb_path);
                 } else {
                     $error = "duplicates, change file name";
                 }

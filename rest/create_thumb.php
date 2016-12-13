@@ -20,5 +20,4 @@ function createThumbnail($src, $dst) {
     imagejpeg($tmp, $dst);
 }
 
-
 ?>
