@@ -1,8 +1,8 @@
 <?php
-// errors
 $error = "";
 
 if ( !empty($_POST) ) {
+    include "create_thumb.php";
     // NULLE!
     extract($_POST); //What even does this doo...
     $category = $_POST['category'];
@@ -15,6 +15,7 @@ if ( !empty($_POST) ) {
             $file_name=$_FILES["files"]["name"][$key];
             $file_tmp=$_FILES["files"]["tmp_name"][$key];
             $ext=pathinfo($file_name,PATHINFO_EXTENSION);
+            // TODO: remove non-jpg from accepted ext?
             if(in_array($ext,$extension)){
                 if(!file_exists($path."/".$file_name)){
                     move_uploaded_file($file_tmp=$_FILES["files"]["tmp_name"][$key], $path."/".$file_name);
