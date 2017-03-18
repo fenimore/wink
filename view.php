@@ -15,7 +15,7 @@ if ($index > sizeof($images)) {
     $index = sizeof($images) - 1;
 }
 $info = pathinfo($images[$index]);
-$filepath = $path . $info['filename'];
+$filepath = $path . $info['filename'] . '.' . $info['extension'];
 echo $filepath;
 
 ?>
