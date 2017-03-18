@@ -41,20 +41,20 @@ echo '<br><br>';
 // TODO: add zoom/fullscreen
 echo '<a href="index.php" class="nav-control"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>';
 echo '<br>';
-echo '<a href=# class="nav-control"><span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span></a>';
+$download = 'zip.php?category='. $category .'&gallery='.$gallery;
+echo '<a href='.$download.' class="nav-control"><span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span></a>';
 echo '</div>';
 if(null==$gallery or null==$category) {
     echo 'ERROR: gallery and/or category parameters not specified.';
 } else {
     $path = 'media/'. $category . '/' . $gallery . '/';
     $images = glob($path."*.{[jJ][pP][gG],gif,jpeg,svg,bmp,png}", GLOB_BRACE);
-    $image = $images[$pic];
-    $info = pathinfo($image);
+    //z$info = pathinfo($image);
     $src = 'view.php?category=' . $category . '&gallery=' . $gallery . '&index=';
-    $title = $pic .': '. str_replace($spaces, " ", $info['filename']);
+    //    $title = str_replace($spaces, " ", $info['filename']);
     $size = sizeof($images);
     echo '<div class="col-md-8">';
-    echo '<img src="'. $image.'" id="image" alt="" width="auto" height="auto" class="img-responsive center-block" >';
+    echo '<img src="#" id="image" alt="" width="auto" height="auto" class="img-responsive center-block" >';
     echo '<br><div class="image-title">' . $title . '</div>';
     echo '</div>'; // Col
     // Next Picture
