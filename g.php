@@ -50,9 +50,15 @@ if(null==$gallery or null==$category) {
     $images = glob($path."*.{[jJ][pP][gG],gif,jpeg,svg,bmp,png}", GLOB_BRACE);
     $image = $images[$pic];
     $info = pathinfo($image);
+    $size = sizeof($images);
     $src = 'view.php?category=' . $category . '&gallery=' . $gallery . '&index=';
     $title = $pic .': '. str_replace($spaces, " ", $info['filename']);
-    $size = sizeof($images);
+    if (sizeof($images) == $pic) {
+        $next = 0;
+    } else {
+        $next = $pic + 1;
+    }
+    echo $pic . sizeof($images);
     echo '<div class="col-md-8">';
     echo '<img src="'. $image.'" id="image" alt="" width="auto" height="auto" class="img-responsive center-block" >';
     echo '<br><div class="image-title">' . $title . '</div>';
@@ -68,23 +74,23 @@ if(null==$gallery or null==$category) {
 </div><!-- Container -->
 
 <script type="text/javascript">
+      var size = <?php echo $size ?>;
       var index = 0;
-      var size = "<?php echo $size ?>";
       function next() {
-          console.log('next');
+          console.log('next', index, size);
           index = checkBounds(index, size, 1);
-          getImage();
+          getImage(index);
       }
       function prev() {
           console.log('prev');
           index = checkBounds(index, size, -1);
-          getImage();
+          getImage(index);
 
       }
 
 function checkBounds(idx, sze, inc) {
+    console.log(idx, sze, inc);
     idx += inc;
-    console.log("What?", idx, inc, sze);
     if (idx == sze) {
         return 0;
     } else if (idx == -2) {
@@ -94,15 +100,14 @@ function checkBounds(idx, sze, inc) {
     }
 }
 
-
-function getImage() {
+function getImage(idx) {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 document.getElementById("image").src = this.responseText;
             }
         };
-        xmlhttp.open("GET","<?php echo $src ?>" + index, true);
+        xmlhttp.open("GET","<?php echo $src ?>" + idx, true);
         xmlhttp.send();
 }
 
