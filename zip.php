@@ -3,10 +3,17 @@ if ( !empty($_GET['gallery'])) {
     $gallery = $_REQUEST['gallery'];
     $category = $_REQUEST['category'];
 }
+$zippath = 'media/'. $gallery .'.zip' ;
+if (file_exists($zippath)) {
+    // Zip already exists
+    header('Content-disposition: attachment; filename='.$gallery.'.zip');
+    header('Content-type: application/zip');
+    readfile($zippath);
+    return;
+}
 $path = 'media/'. $category . '/' . $gallery . '/';
 $images = glob($path."*.{[jJ][pP][gG],gif,jpeg,svg,bmp,png}", GLOB_BRACE);
 // Get real path for our folder
-$zippath = 'media/'. $gallery .'.zip' ;
 
 // Initialize archive object
 $zip = new ZipArchive();
