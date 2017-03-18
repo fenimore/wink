@@ -7,7 +7,7 @@
     <meta name="description" content="Photo Gallery">
     <meta name="keywords" content="PHP, Photography">
     <meta name="author" content="Fenimore">
-    <link rel="icon" href="favicon.ico">    
+    <link rel="icon" href="favicon.ico">
     <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -15,8 +15,8 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen"/>
-  <style> 
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="screen"/>
+  <style>
   </style>
 </head>
 <body>
@@ -27,22 +27,22 @@
 <?php
   $gallery = null;
   $spaces = array("-", "_");
-	if ( !empty($_GET['gallery'])) {
-		$gallery = $_REQUEST['gallery'];
-		$category = $_REQUEST['category'];
-	}
-	$gallerytitle = str_replace($spaces, " ", $gallery);
-	echo '<h1 class="title"> <a href=index.php>'. ucfirst($gallerytitle) .'</a></h1>';
-	echo '<div class="col-md-1 col-md-offset-1">';
-	echo '<a href=# onclick="prevSlide()" class="nav-control"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>';
-	echo '<br><br>';
-	echo '<a href="index.php" class="nav-control"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>';
-	echo '<br>';
+    if ( !empty($_GET['gallery'])) {
+        $gallery = $_REQUEST['gallery'];
+        $category = $_REQUEST['category'];
+    }
+    $gallerytitle = str_replace($spaces, " ", $gallery);
+    echo '<h1 class="title"> <a href=index.php>'. ucfirst($gallerytitle) .'</a></h1>';
+    echo '<div class="col-md-1 col-md-offset-1">';
+    echo '<a href=# onclick="prevSlide()" class="nav-control"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>';
+    echo '<br><br>';
+    echo '<a href="index.php" class="nav-control"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>';
+    echo '<br>';
     echo '<a href=# class="nav-control"><span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span></a>';
   echo '</div>';
   if(null==$gallery or null==$category) {
     echo 'ERROR: gallery and/or category parameters not specified.';
-  } 
+  }
   else {
     $path = 'media/'. $category . '/' . $gallery . '/';
     $images = glob($path."*.{[jJ][pP][gG],gif,jpeg,svg,bmp,png}", GLOB_BRACE);
@@ -79,7 +79,7 @@
           var $next = $active.next();
           if($active.is(':last-child')){
             $next = $('#slider div:first-child');
-          }  
+          }
           $next.addClass('active');
           $next.show();
           $active.hide();
@@ -87,8 +87,8 @@
       }
       function prevSlide() {
           console.log('next');
-          var $active = $('div#slider DIV.active'); 
-          var $prev = $active.prev();    
+          var $active = $('div#slider DIV.active');
+          var $prev = $active.prev();
           if($active.is(':first-child')){
             $prev = $('#slider div:last-child');
           }
