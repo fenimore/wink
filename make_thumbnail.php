@@ -15,8 +15,10 @@ function make_thumb($src, $dest, $desired_width) {
     imagejpeg($virtual_image, $dest);
 }
 
+echo '<h1>Making thumbnails for selected category</h1>';
+
 $category = $_REQUEST['category'];
-$galleries = array_filter(glob('media/'.$category.'*'), 'is_dir');
+$galleries = array_filter(glob('media/'.$category.'/*'), 'is_dir');
 
 foreach($galleries as $gallery) {
     $path = 'media/'. $category . '/' . $gallery . '/';
@@ -28,6 +30,8 @@ foreach($galleries as $gallery) {
         $thumb = $thumbpath.'thmb-' . $info['filename'] . '.' . $info['extension'];
          make_thumb($image, $thumb, 60);
     }
+
+
 }
 
 ?>
