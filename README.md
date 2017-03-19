@@ -6,10 +6,6 @@ A simple flat file photo gallery.
 
 Easy setup! Simply go into `auth/` and change the md5 hash to your desired password (the default is "hello", or `907e131eb3bf6f21292fa1ed16e8b60c` MD5), and then upload the site files onto a server running PHP.
 
-## Thumbnails?
-
-the production of thumbnails from uploads is not yet implemented, see the thumbnails branch.
-
 ### Titles and Sorting
 
 The categories and galleries are directories, with _ and - replaced by spaces. The image titles are the filenames likewise stripped of _ and -. Galleries are indexed in reverse alphabetical order, so if album title is the date, the most recent will be on top.
@@ -38,9 +34,6 @@ done
 - Prev and Next should be larger buttons
 - Contact/About Page
 - Improve Admin dashboard
-- Download/Upload Zip file
-- Add thumbnail creation to ease up load times with large images
-  - See: [stackoverflow](http://stackoverflow.com/questions/11376315/creating-a-thumbnail-from-an-uploaded-image)
 
 ## Dependencies
 - Bootstrap (CDN)
