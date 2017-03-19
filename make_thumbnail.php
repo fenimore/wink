@@ -16,7 +16,7 @@ function make_thumb($src, $dest, $desired_width) {
 }
 
 $category = $_REQUEST['category'];
-$galleries = array_filter(glob('../media/'.$category.'*'), 'is_dir');
+$galleries = array_filter(glob('media/'.$category.'*'), 'is_dir');
 
 foreach($galleries as $gallery) {
     $path = 'media/'. $category . '/' . $gallery . '/';
