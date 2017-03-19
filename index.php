@@ -39,7 +39,7 @@ foreach($categories as $category){
   foreach($galleries as $gallery){
     $gall = substr($gallery, strlen($category) + 1); // strip path
     $gallerytitle = str_replace($spaces, " ", $gall); // - and _ are spaces
-    echo '<li><a href=thumbnail.php?category=' . $cat . '&gallery='.$gall.'>';
+    echo '<li><a href=gallery.php?category=' . $cat . '&gallery='.$gall.'>';
     echo '<span class="glyphicon glyphicon-th-large" aria-hidden="true">';
     echo '</span></a> | <a href=gallery.php?category=' . $cat;
     echo '&gallery=' . $gall .' >';

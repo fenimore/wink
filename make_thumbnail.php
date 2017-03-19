@@ -29,6 +29,10 @@ foreach($galleries as $gallery) {
     $path = 'media/'. $category . '/' . basename($gallery) . '/';
     $images = glob($path."*.{[jJ][pP][gG],gif,jpeg,svg,bmp,png}", GLOB_BRACE);
     $thumbpath = $path . 'thumbnails/';
+if (file_exists($thumbpath)){
+    echo '<h2>gallery: '.basename($gallery).' Already Exists</h2>';
+    continue;
+}
     mkdir($thumbpath, 0777, true);
     echo '<h2>gallery: '.basename($gallery).'</h2>';
     foreach($images as $image) {
