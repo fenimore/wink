@@ -106,7 +106,7 @@ function getImage() {
         };
         xmlhttp.open("GET","<?php echo $src ?>" + index, true);
         xmlhttp.send();
-        document.getElementById("loading").display = block;
+        document.getElementById("loading").display = "block";
 }
 
 getImage();
