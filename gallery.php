@@ -61,7 +61,7 @@ if(null==$gallery or null==$category) {
     echo '<div class="col-md-1 text-right" style="z-index:100">';
     echo '<a href=# onclick="next()"';
     echo ' class="nav-control"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>';
-    echo '<img src="loading.gif" display=none; id="loading" alt="" width="auto" height="auto" class="img-responsive center-block" >';
+    echo '<img src="loading.gif" display=none; id="loading" alt="" width="auto" height="auto" >';
     echo '</div>';
 }
 ?>
@@ -101,10 +101,12 @@ function getImage() {
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 document.getElementById("image").src = this.responseText;
+                document.getElementById("loading").display = none;
             }
         };
         xmlhttp.open("GET","<?php echo $src ?>" + index, true);
         xmlhttp.send();
+        document.getElementById("loading").display = block;
 }
 
 getImage();
