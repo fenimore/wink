@@ -18,13 +18,13 @@ function make_thumb($src, $dest, $desired_width) {
 echo '<h1>Making thumbnails for selected category</h1>';
 
 $category = $_REQUEST['category'];
-$galleries = array_filter(glob('media/'.$category.'/*'), 'is_dir');
+$galleries = glob('media/'.$category.'/*');
 
 foreach($galleries as $gallery) {
     $path = 'media/'. $category . '/' . $gallery . '/';
     $images = glob($path."*.{[jJ][pP][gG],gif,jpeg,svg,bmp,png}", GLOB_BRACE);
     $thumbpath = $path . 'thumbnails/';
-    mkdir($thumbpath, 0775);
+mkdir($thumbpath, 0777, true);
     foreach($images as $image) {
         $info = pathinfo($image);
         $thumb = $thumbpath.'thmb-' . $info['filename'] . '.' . $info['extension'];
