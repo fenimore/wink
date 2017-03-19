@@ -68,10 +68,12 @@ echo '  </div>'; // Col
 echo '</div>'; //<!-- Row -->
 echo '<div id="slider" class="row">';
 foreach($thumbnails as $key=>$val) {
-    if ($key > 12) { // bootstrap column
-        continue;
+    echo '<div class="col-md-1"';
+    if ($key > 11) { // bootstrap column
+        echo ' style="display:none" ';
     }
-    echo '<div class="col-md-1">';
+    echo '>';
+    // Thumbnail should only be visible if...
     echo '  <img src="'.$val.'" class="thmb" id="thumbnail-'.$key;
     echo '" alt="" width="auto" height="auto"';
     echo ' class="img-responsive center-block" >';
