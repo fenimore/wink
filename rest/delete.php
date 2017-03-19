@@ -1,4 +1,10 @@
 <?php
+session_start();
+if(!isset($_SESSION['loggedin'])){
+    header("Location:login.php");
+    return;
+}
+
 // errors
 $directoryerr = "directory does not exist";
 
@@ -6,7 +12,7 @@ $directoryerr = "directory does not exist";
     $dirname = $_POST['dirname'];
     $path = '../media/' . $dirname;
 
-    
+
 
     if(is_dir($path)) {
       $files = glob($path . "/*");
@@ -18,7 +24,7 @@ $directoryerr = "directory does not exist";
       rmdir($path);
       // Flash message?
       header("Location: ../index.php");
-    } 
+    }
   }
 
 ?>
@@ -37,7 +43,7 @@ $directoryerr = "directory does not exist";
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    	<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen"/>
 </head>
 <body>
 <a href="../auth/admin.php">Return to Admin</a>

@@ -1,14 +1,17 @@
 <?php
+session_start();
+if(!isset($_SESSION['loggedin'])){
+    header("Location:login.php");
+    return;
+}
+
   $directoryerr = "directory already exists";
 
   if ( !empty($_POST) ) {
     $category = $_POST['category'];
     $gallery = $_POST['gallery'];
     $path = '../media/' . $category . '/' . $gallery;
-    //echo '<br><br>Category ' . $category;
-    //echo '<br><br>Gallery ' . $gallery;
-    //echo '<br><br>Path ' . $path;
-    
+
     if(!is_dir($path)) {
       mkdir($path);
       header("Location: ../auth/admin.php");
@@ -34,7 +37,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    	<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen"/>
 </head>
 <body>
 <a href="../auth/admin.php">Return to Admin</a>

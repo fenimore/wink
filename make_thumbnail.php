@@ -25,6 +25,7 @@ foreach($galleries as $gallery) {
     $images = glob($path."*.{[jJ][pP][gG],gif,jpeg,svg,bmp,png}", GLOB_BRACE);
     $thumbpath = $path . 'thumbnails/';
     mkdir($thumbpath, 0777, true);
+    echo '<h2>gallery: '.basename($gallery).'</h2>';
     foreach($images as $image) {
         $info = pathinfo($image);
         $thumb = $thumbpath.'thmb-' . $info['filename'] . '.' . $info['extension'];
