@@ -52,8 +52,9 @@ function getCC(){
             }
           ?>
         </select><br>
+        <input type="checkbox" name="over" value="true"> Overwrite<br>
         <br>
-        <input class="btn btn-success" type="submit" value="Generate Thumbnails">
+        <input class="btn btn-success" type="submit" value="Create Gallery">
       </form>
   </div>
   <div class="row" style="margin-top:5%">

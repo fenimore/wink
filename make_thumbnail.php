@@ -23,13 +23,14 @@ function make_thumb($src, $dest, $desired_width) {
 echo '<h1>Making thumbnails for selected category</h1>';
 
 $category = $_REQUEST['category'];
+$overwrite = $_REQUEST['over'];
 $galleries = glob('media/'.$category.'/*');
 
 foreach($galleries as $gallery) {
     $path = 'media/'. $category . '/' . basename($gallery) . '/';
     $images = glob($path."*.{[jJ][pP][gG],gif,jpeg,svg,bmp,png}", GLOB_BRACE);
     $thumbpath = $path . 'thumbnails/';
-if (file_exists($thumbpath)){
+if (file_exists($thumbpath) && $overwrite != 'true'){
     echo '<h2>gallery: '.basename($gallery).' Already Exists</h2>';
     continue;
 }
@@ -38,7 +39,7 @@ if (file_exists($thumbpath)){
     foreach($images as $image) {
         $info = pathinfo($image);
         $thumb = $thumbpath.'thmb-' . $info['filename'] . '.' . $info['extension'];
-         make_thumb($image, $thumb, 60);
+         make_thumb($image, $thumb, 150);
     }
 
 
