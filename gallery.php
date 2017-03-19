@@ -75,7 +75,7 @@ foreach($thumbnails as $key=>$val) {
     echo '>';
     // Thumbnail should only be visible if...
     echo '  <img src="'.$val.'" class="thmb" id="thumbnail-'.$key;
-    echo '" alt="" width="auto" height="auto"';
+    echo '" alt="" width="auto" height="auto" onclick="getImage('. $key .')"';
     echo ' class="img-responsive center-block" >';
     echo '</div>';// col
 }
@@ -88,19 +88,16 @@ echo '</div>'; // Row
 <script type="text/javascript">
       var index = 0;
       var size = "<?php echo $size ?>";
-      var thumbs = $('thmb');
 
       function next() {
           console.log('next');
           index = checkBounds(index, size, 1);
-          getImage();
-          var $active = $('div#slider IMG.active');
-          var $next = $active.next();
+          getImage(index);
       }
       function prev() {
           console.log('prev');
           index = checkBounds(index, size, -1);
-          getImage();
+          getImage(index);
       }
 
 function checkBounds(idx, sze, inc) {
@@ -115,25 +112,23 @@ function checkBounds(idx, sze, inc) {
 }
 
 
-function getImage() {
-    // TODO: add loading
+function getImage(idx) {
+    // FIXME: add loading
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 document.getElementById("image").src = this.responseText;
                 document.getElementById("loading").display = "none";
-                var $active = $('div#slider IMG.active');
-                $active.removeClass('active');
-                $active.next().addClass('active');
+                index = idx; // when called from thumbnail tabs
             }
         };
-        xmlhttp.open("GET","<?php echo $src ?>" + index, true);
+        xmlhttp.open("GET","<?php echo $src ?>" + idx, true);
         xmlhttp.send();
         document.getElementById("loading").display = "block";
 
 }
 
-getImage();
+getImage(0);
 
 </script>
 </body>
