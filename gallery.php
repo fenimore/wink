@@ -68,13 +68,13 @@ echo '  </div>'; // Col
 echo '</div>'; //<!-- Row -->
 echo '<div id="slider" class="row">';
 foreach($thumbnails as $key=>$val) {
-    echo '<div class="col-md-1"';
+    echo '<div class="col-md-1 thmb"';
     if ($key > 11) { // bootstrap column
         echo ' style="display:none" ';
     }
     echo '>';
     // Thumbnail should only be visible if...
-    echo '  <img src="'.$val.'" class="thmb" id="thumbnail-'.$key;
+    echo '  <img src="'.$val.'"  id="thumbnail-'.$key;
     echo '" alt="" width="auto" height="auto" onclick="getImage('. $key .')"';
     echo ' class="img-responsive center-block" >';
     echo '</div>';// col
@@ -114,26 +114,26 @@ function checkBounds(idx, sze, inc) {
 
 function getImage(idx) {
     // FIXME: add loading
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("image").src = this.responseText;
-                document.getElementById("loading").display = "none";
-                index = idx; // when called from thumbnail tabs
-                var thumbs = document.getElementsByClassName("thmb");
-                if ((idx-1)%12 == 0){
-                    for (var i = 0; i < thumbs.length; i++) {
-                        if (i < idx) {
-                            thumbs[i].display = "none";
-                        } else if (idx+12 < i) {
-                            thumbs[i].display = "none";
-                        } else {
-                            thumbs[i].display = "block";
-                        }
-                    }
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("image").src = this.responseText;
+            document.getElementById("loading").display = "none";
+            index = idx; // when called from thumbnail tabs
+            var thumbs = document.getElementsByClassName("thmb");
+            // only show some thumbnails
+            console.log("Divisible by twelve", thumbs);
+            for (var i = 0; i < thumbs.length; i++) {
+                if (i < idx-3 || i > idx+6) {
+                    console.log("less or more", i, idx);
+                    thumbs[i].style.display = "none";
+                } else {
+                    console.log("just right", i, idx);
+                    thumbs[i].style.display = "block";
                 }
             }
-        };
+        }
+    };
         xmlhttp.open("GET","<?php echo $src ?>" + idx, true);
         xmlhttp.send();
         document.getElementById("loading").display = "block";
