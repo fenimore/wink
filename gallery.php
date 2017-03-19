@@ -123,17 +123,20 @@ function getImage(idx) {
             var thumbs = document.getElementsByClassName("thmb");
             // only show some thumbnails
             if (idx%12 == 0){
-                console.log("Divisible by twelve");
+                console.log("Divisible by twelve", thumbs);
                 for (var i = 0; i < thumbs.length; i++) {
-                    console.log(i, idx, thumbs);
                     if (i < idx) {
+                        console.log("less", i, idx);
                         thumbs[i].display = "none";
                     } else if (idx+12 < i) {
+                        console.log("more", i, idx);
                         thumbs[i].display = "none";
                     } else {
+                        console.log("just right", i, idx);
                         thumbs[i].display = "block";
                     }
                 }
+                console.log(thumbs);
             }
         }
     };
