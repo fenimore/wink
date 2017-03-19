@@ -1,8 +1,6 @@
 <?php
-if ( !empty($_GET['gallery'])) {
-    $gallery = $_REQUEST['gallery'];
-    $category = $_REQUEST['category'];
-}
+$gallery = $_REQUEST['gallery'];
+$category = $_REQUEST['category'];
 $zippath = 'media/'. $gallery .'.zip' ;
 if (file_exists($zippath)) {
     // Zip already exists

@@ -61,6 +61,7 @@ if(null==$gallery or null==$category) {
     echo '<div class="col-md-1 text-right" style="z-index:100">';
     echo '<a href=# onclick="next()"';
     echo ' class="nav-control"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>';
+    echo '<img src="loading.gif" display=none; id="loading" alt="" width="auto" height="auto" class="img-responsive center-block" >';
     echo '</div>';
 }
 ?>
@@ -84,7 +85,6 @@ if(null==$gallery or null==$category) {
 
 function checkBounds(idx, sze, inc) {
     idx += inc;
-    console.log("What?", idx, inc, sze);
     if (idx == sze) {
         return 0;
     } else if (idx == -2) {
@@ -96,6 +96,7 @@ function checkBounds(idx, sze, inc) {
 
 
 function getImage() {
+    // TODO: add loading
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
