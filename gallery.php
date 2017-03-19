@@ -68,6 +68,9 @@ echo '  </div>'; // Col
 echo '</div>'; //<!-- Row -->
 echo '<div id="slider" class="row">';
 foreach($thumbnails as $key=>$val) {
+    if ($key > 12) { // bootstrap column
+        continue;
+    }
     echo '<div class="col-md-1">';
     echo '  <img src="'.$val.'" class="thmb" id="thumbnail-'.$key;
     echo '" alt="" width="auto" height="auto"';
