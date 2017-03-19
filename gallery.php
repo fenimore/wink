@@ -61,7 +61,8 @@ if(null==$gallery or null==$category) {
     echo '<div class="col-md-1 text-right" style="z-index:100">';
     echo '<a href=# onclick="next()"';
     echo ' class="nav-control"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>';
-    echo '<img src="loading.gif" display=none; id="loading" alt="" width="auto" height="auto" >';
+    echo '<br><br>';
+    echo '<img src="loading.gif" style="display:none;"; id="loading" alt="" width="auto" height="auto" >';
     echo '</div>';
 }
 ?>
