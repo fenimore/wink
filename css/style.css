@@ -20,6 +20,11 @@ a:hover {
     cursor: pointer;
 }
 
+.arrow {
+    margin-top: 2em;
+    font-size: 2em;
+}
+
 .wink {
   float: right;
   margin: 0 0 10px 10px;
