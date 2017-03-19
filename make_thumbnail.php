@@ -15,22 +15,19 @@ function make_thumb($src, $dest, $desired_width) {
     imagejpeg($virtual_image, $dest);
 }
 
-if ( !empty($_GET['gallery'])) {
-    $gallery = $_REQUEST['gallery'];
-    $category = $_REQUEST['category'];
-} else {
-    echo 'Error finding directory';
-    return;
-}
+$category = $_REQUEST['category'];
+$galleries = array_filter(glob('../media/'.$category.'*'), 'is_dir');
 
-$path = 'media/'. $category . '/' . $gallery . '/';
-$images = glob($path."*.{[jJ][pP][gG],gif,jpeg,svg,bmp,png}", GLOB_BRACE);
-$thumbpath = $path . 'thumbnails/';
-mkdir($thumbpath, 0775);
-foreach($images as $image) {
-    $info = pathinfo($image);
-    $thumb = $thumbpath.'thmb-' . $info['filename'] . '.' . $info['extension'];
-    make_thumb($image, $thumb, 60);
+foreach($galleries as $gallery) {
+    $path = 'media/'. $category . '/' . $gallery . '/';
+    $images = glob($path."*.{[jJ][pP][gG],gif,jpeg,svg,bmp,png}", GLOB_BRACE);
+    $thumbpath = $path . 'thumbnails/';
+    mkdir($thumbpath, 0775);
+    foreach($images as $image) {
+        $info = pathinfo($image);
+        $thumb = $thumbpath.'thmb-' . $info['filename'] . '.' . $info['extension'];
+         make_thumb($image, $thumb, 60);
+    }
 }
 
 ?>
