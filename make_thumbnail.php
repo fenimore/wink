@@ -41,8 +41,7 @@ if (file_exists($thumbpath) && $overwrite != 'true'){
         $thumb = $thumbpath.'thmb-' . $info['filename'] . '.' . $info['extension'];
          make_thumb($image, $thumb, 150);
     }
-
-
 }
+header('Location: admin.php');
 
 ?>

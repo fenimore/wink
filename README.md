@@ -37,7 +37,8 @@ done
 
 ## Dependencies
 - Bootstrap (CDN)
-- PHP (5.4/5.2? I'm not sure)
+- PHP (I use 7, but whatever should work)
+- PHP gd module
 
 ## License
 
