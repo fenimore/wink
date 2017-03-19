@@ -127,13 +127,13 @@ function getImage(idx) {
                 for (var i = 0; i < thumbs.length; i++) {
                     if (i < idx) {
                         console.log("less", i, idx);
-                        thumbs[i].display = "none";
+                        thumbs[i].style.display = "none";
                     } else if (idx+12 < i) {
                         console.log("more", i, idx);
-                        thumbs[i].display = "none";
+                        thumbs[i].style.display = "none";
                     } else {
                         console.log("just right", i, idx);
-                        thumbs[i].display = "block";
+                        thumbs[i].style.display = "block";
                     }
                 }
                 console.log(thumbs);
