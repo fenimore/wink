@@ -21,10 +21,10 @@ $category = $_REQUEST['category'];
 $galleries = glob('media/'.$category.'/*');
 
 foreach($galleries as $gallery) {
-    $path = 'media/'. $category . '/' . $gallery . '/';
+    $path = 'media/'. $category . '/' . basename($gallery) . '/';
     $images = glob($path."*.{[jJ][pP][gG],gif,jpeg,svg,bmp,png}", GLOB_BRACE);
     $thumbpath = $path . 'thumbnails/';
-mkdir($thumbpath, 0777, true);
+    mkdir($thumbpath, 0777, true);
     foreach($images as $image) {
         $info = pathinfo($image);
         $thumb = $thumbpath.'thmb-' . $info['filename'] . '.' . $info['extension'];
