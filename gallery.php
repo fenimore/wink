@@ -125,6 +125,7 @@ function getImage(idx) {
             if (idx%12 == 0){
                 console.log("Divisible by twelve");
                 for (var i = 0; i < thumbs.length; i++) {
+                    console.log(i, idx, thumbs);
                     if (i < idx) {
                         thumbs[i].display = "none";
                     } else if (idx+12 < i) {
