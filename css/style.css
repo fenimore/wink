@@ -4,7 +4,7 @@ h1 {
 body {
   background-color: black;
   font-family: 'Josefin Sans', sans-serif;
-} 
+}
 a {
   color: white;
 }
@@ -16,10 +16,14 @@ a:hover {
   max-height: 600px;
 }
 
+.active {
+    width:200%;
+}
+
 .wink {
   float: right;
   margin: 0 0 10px 10px;
-  
+
 }
 .wink:hover {
   width: 500px;
@@ -35,21 +39,21 @@ a:hover {
     color: #52ADDA;
     font-family: monospace;
     text-decoration: none;
-  }   
-  
+  }
+
   .photo-index {
     font-size: 17px;
   }
-  
+
   .nav-control {
     font-size: 30px;
    }
-   
+
    .text-muted {
     margin:15px;
    }
-   
-   
+
+
    /* Sticky footer styles
 -------------------------------------------------- */
 html {

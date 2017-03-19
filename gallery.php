@@ -88,12 +88,7 @@ echo '</div>'; // Row
 <script type="text/javascript">
       var index = 0;
       var size = "<?php echo $size ?>";
-
-$(document).ready(function() {
-    $('#slider img:first-child').addClass('active');
-});
-
-
+      var thumbs = $('thmb');
 
       function next() {
           console.log('next');
@@ -141,11 +136,15 @@ function getImage() {
             if (this.readyState == 4 && this.status == 200) {
                 document.getElementById("image").src = this.responseText;
                 document.getElementById("loading").display = "none";
+                var $active = $('div#slider IMG.active');
+                $active.removeClass('active');
+                thumbs[index].addClass('active');
             }
         };
         xmlhttp.open("GET","<?php echo $src ?>" + index, true);
         xmlhttp.send();
         document.getElementById("loading").display = "block";
+
 }
 
 getImage();
