@@ -128,7 +128,7 @@ function getImage(idx) {
                         } else if (idx+12 < i) {
                             thumbs[i].display = "none";
                         } else {
-                            thumbs.[i].display = "block";
+                            thumbs[i].display = "block";
                         }
                     }
                 }
