@@ -96,25 +96,11 @@ echo '</div>'; // Row
           getImage();
           var $active = $('div#slider IMG.active');
           var $next = $active.next();
-          if($active.is(':last-child')){
-              $next = $('#slider img:first-child');
-          }
-          $next.addClass('active');
-          // Change attribute to zoom
-          $active.removeClass('active');
       }
       function prev() {
           console.log('prev');
           index = checkBounds(index, size, -1);
           getImage();
-          var $active = $('div#slider IMG.active');
-          var $prev = $active.prev();
-          if($active.is(':first-child')){
-              $prev = $('#slider img:last-child');
-          }
-          $prev.addClass('active');
-          // do something
-          $active.removeClass('active');
       }
 
 function checkBounds(idx, sze, inc) {
@@ -138,7 +124,7 @@ function getImage() {
                 document.getElementById("loading").display = "none";
                 var $active = $('div#slider IMG.active');
                 $active.removeClass('active');
-                thumbs[index].addClass('active');
+                $active.next().addClass('active');
             }
         };
         xmlhttp.open("GET","<?php echo $src ?>" + index, true);
