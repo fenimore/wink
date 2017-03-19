@@ -122,14 +122,11 @@ function getImage(idx) {
             index = idx; // when called from thumbnail tabs
             var thumbs = document.getElementsByClassName("thmb");
             // only show some thumbnails
-            if (idx%12 == 0){
-                console.log("Divisible by twelve", thumbs);
+            // TODO: make wrap
+            if (idx % 12 == 0 || idx == thumbs.length || idx == -1){
                 for (var i = 0; i < thumbs.length; i++) {
-                    if (i < idx) {
-                        console.log("less", i, idx);
-                        thumbs[i].style.display = "none";
-                    } else if (idx+12 < i) {
-                        console.log("more", i, idx);
+                    if (i < idx-3 || i > idx+12) {
+                        console.log("less or more", i, idx);
                         thumbs[i].style.display = "none";
                     } else {
                         console.log("just right", i, idx);
