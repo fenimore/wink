@@ -101,7 +101,7 @@ function getImage() {
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 document.getElementById("image").src = this.responseText;
-                document.getElementById("loading").display = none;
+                document.getElementById("loading").display = "none";
             }
         };
         xmlhttp.open("GET","<?php echo $src ?>" + index, true);
