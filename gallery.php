@@ -68,11 +68,13 @@ echo '  </div>'; // Col
 echo '</div>'; //<!-- Row -->
 echo '<div id="slider" class="row">';
 foreach($thumbnails as $key=>$val) {
-    echo '<div class="col-md-1 thmb"';
-    if ($key > 11) { // bootstrap column
-        echo ' style="display:none" ';
+    if ($key % 12 == 0) { // bootstrap column
+        //echo ' style="display:none" ';
+        echo '</div>';
+        echo '<div class="row" style="margin-top:5%;">';
     }
-    echo '>';
+    echo '<div class="col-md-1 thmb" >';
+    // echo '>';
     // Thumbnail should only be visible if...
     echo '  <img src="'.$val.'"  id="thumbnail-'.$key;
     echo '" alt="" width="auto" height="auto" onclick="getImage('. $key .')"';
@@ -120,20 +122,20 @@ function getImage(idx) {
             document.getElementById("image").src = this.responseText;
             document.getElementById("loading").display = "none";
             index = idx; // when called from thumbnail tabs
-            var thumbs = document.getElementsByClassName("thmb");
-            // only show some thumbnails
-            // TODO: make wrap
-            if (idx % 12 == 0 || idx == thumbs.length || idx == -1){
-                for (var i = 0; i < thumbs.length; i++) {
-                    if (i < idx-3 || i > idx+12) {
-                        console.log("less or more", i, idx);
-                        thumbs[i].style.display = "none";
-                    } else {
-                        console.log("just right", i, idx);
-                        thumbs[i].style.display = "block";
-                    }
-                }
-            }
+            // var thumbs = document.getElementsByClassName("thmb");
+            // // only show some thumbnails
+            // // TODO: make wrap
+            // if (idx % 12 == 0 || idx == thumbs.length || idx == -1){
+            //     for (var i = 0; i < thumbs.length; i++) {
+            //         if (i < idx-3 || i > idx+12) {
+            //             console.log("less or more", i, idx);
+            //             //thumbs[i].style.display = "none";
+            //         } else {
+            //             console.log("just right", i, idx);
+            //             //thumbs[i].style.display = "block";
+            //         }
+            //     }
+            // }
         }
     };
         xmlhttp.open("GET","<?php echo $src ?>" + idx, true);
