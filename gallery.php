@@ -120,6 +120,18 @@ function getImage(idx) {
                 document.getElementById("image").src = this.responseText;
                 document.getElementById("loading").display = "none";
                 index = idx; // when called from thumbnail tabs
+                var thumbs = document.getElementsByClassName("thmb");
+                if ((idx-1)%12 == 0){
+                    for (var i = 0; i < thumbs.length; i++) {
+                        if (i < idx) {
+                            thumbs[i].display = "none";
+                        } else if (idx+12 < i) {
+                            thumbs[i].display = "none";
+                        } else {
+                            thumbs.[i].display = "block";
+                        }
+                    }
+                }
             }
         };
         xmlhttp.open("GET","<?php echo $src ?>" + idx, true);
