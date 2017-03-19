@@ -24,7 +24,7 @@ $categories = array_filter(glob('../media/*'), 'is_dir');
     <!-- Latest compiled JavaScript -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen"/>
-    
+
 <script type="text/javscript">
 function getCC(){
     $('#create-cat').slideUp();
@@ -38,6 +38,23 @@ function getCC(){
     <a href=../index.php><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Index</a>
     <a href=logout.php><span class="glyphicon glyphicon-road" aria-hidden="true"></span> Logout</a>
     <hr>
+  </div>
+  <div class="row" style="margin-top:5%">
+            <h1>Generate Thumbnails</h1>
+            <form action="../make_thumbnail.php" id="thumbnailform" method="GET">
+            <label for="thumbs">Category : </label>
+            <select class="form-control" form="thumbnailform" name="category">
+          <?php
+            foreach($categories as $category) {
+              $cat = substr($category, 9);
+              echo '<option value="'.$cat.'">';
+              echo ucfirst($cat) . '</option>';
+            }
+          ?>
+        </select><br>
+        <br>
+        <input class="btn btn-success" type="submit" value="Generate Thumbnails">
+      </form>
   </div>
   <div class="row" style="margin-top:5%">
     <div class="col-md-4" style="display:none">
@@ -128,7 +145,7 @@ function getCC(){
       <p>The Categories, Galleries, and Image filenames must not include spaces. When displayed, they a space will replace any '-' or '_' character.</p>
       <p>The Galleries are listed in reverse alphabetic/numeric order (so that if listed by year, the most recent will be on top. The galleries themselves will be sorted in normal alphabetic/numeric order.</p>
       <p>Depending on how your php.ini is configured on your server, uploading through the admin interface can be slow. Using rather a FTP client will be faster.</p>
-    </div>    
+    </div>
   </div>
 </div>
 </body>

@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(!isset($_SESSION['loggedin'])){
+    header("Location:login.php");
+    return;
+}
 // https://davidwalsh.name/create-image-thumbnail-php
 function make_thumb($src, $dest, $desired_width) {
     /* read the source image */
