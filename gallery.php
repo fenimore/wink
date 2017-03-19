@@ -114,26 +114,28 @@ function checkBounds(idx, sze, inc) {
 
 function getImage(idx) {
     // FIXME: add loading
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("image").src = this.responseText;
-                document.getElementById("loading").display = "none";
-                index = idx; // when called from thumbnail tabs
-                var thumbs = document.getElementsByClassName("thmb");
-                if ((idx-1)%12 == 0){
-                    for (var i = 0; i < thumbs.length; i++) {
-                        if (i < idx) {
-                            thumbs[i].display = "none";
-                        } else if (idx+12 < i) {
-                            thumbs[i].display = "none";
-                        } else {
-                            thumbs[i].display = "block";
-                        }
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("image").src = this.responseText;
+            document.getElementById("loading").display = "none";
+            index = idx; // when called from thumbnail tabs
+            var thumbs = document.getElementsByClassName("thmb");
+            // only show some thumbnails
+            if (idx%12 == 0){
+                console.log("Divisible by twelve");
+                for (var i = 0; i < thumbs.length; i++) {
+                    if (i < idx) {
+                        thumbs[i].display = "none";
+                    } else if (idx+12 < i) {
+                        thumbs[i].display = "none";
+                    } else {
+                        thumbs[i].display = "block";
                     }
                 }
             }
-        };
+        }
+    };
         xmlhttp.open("GET","<?php echo $src ?>" + idx, true);
         xmlhttp.send();
         document.getElementById("loading").display = "block";
