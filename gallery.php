@@ -127,6 +127,7 @@ function getImage(idx) {
             for (var i = 0; i < thumbs.length; i++) {
                 thumbs[i].style.boxShadow = "";
             }
+            if (idx == -1) {idx = thumbs.length}
             thumbs[idx].style.boxShadow = "inset 0 0 1em black, 0 0 1em white";
         }
     };
@@ -139,10 +140,10 @@ function getImage(idx) {
 getImage(0);
 
 document.addEventListener("keydown", function (e) {
-    if (e.keyCode == 37 || e.keyCode == 38){
-        next();
-    } else if (e.keyCode == 39 || e.keyCode == 40) {
+    if (e.keyCode == 37){
         prev();
+    } else if (e.keyCode == 39) {
+        next();
     }
 });
 
