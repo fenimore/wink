@@ -58,12 +58,9 @@ if ( !empty($_POST) ) {
 <body>
 <a href="../auth/admin.php">Return to Admin</a>
 <?php
-
-      if(isNotEmpty($error)) {
-          echo '<br>ERRROR:' . $error;
-      }
-      echo '<br>Directory:' . $dirname;
-      echo '<br>Path:' . $path;
+    echo '<br>ERRROR:' . $error;
+echo '<br>Directory:' . $dirname;
+echo '<br>Path:' . $path;
 ?>
 </body>
 </html>

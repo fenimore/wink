@@ -43,7 +43,7 @@ function getCC(){
             <h1>Generate Thumbnails</h1>
             <form action="../make_thumbnail.php" id="thumbnailform" method="GET">
             <label for="thumbs">Category : </label>
-            <select class="form-control" form="thumbnailform" name="category">
+            <select class="form-control" style="width:50%;" form="thumbnailform" name="category">
           <?php
             foreach($categories as $category) {
               $cat = substr($category, 9);
@@ -54,7 +54,7 @@ function getCC(){
         </select><br>
         <input type="checkbox" name="over" value="true"> Overwrite<br>
         <br>
-        <input class="btn btn-success" type="submit" value="Create Gallery">
+        <input class="btn btn-success" type="submit" value="Create Thumbnails">
       </form>
   </div>
   <div class="row" style="margin-top:5%">
@@ -88,10 +88,12 @@ function getCC(){
               $cat = substr($category, 9);
               echo '<option value="'.$cat.'">';
               echo ucfirst($cat) . '</option>';
+// TODO: fix syntax highlighting...
+//$galleries = array_filter(glob('../media/'. $category .'/*'), 'is_dir');
             }
+            echo '        </select><br>';
+            echo '        <label for="dirname">Gallery : </label>';
           ?>
-        </select><br>
-        <label for="dirname">Gallery : </label>
         <input class="form-control" type="text" name="gallery"
         placeholder="Gallery Name - Lower Case, No Spaces">
         <br>

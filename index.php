@@ -30,7 +30,7 @@ $categories = array_filter(glob('media/*'), 'is_dir');
 foreach($categories as $category){
   $cat = substr($category, 6);
   echo  $cat; // category header, make h3???
-  echo "<br><small>full  | individual</small>";
+  echo "<br><small>albums</small>";
   $galleries = array_filter(glob($category . '/*'), 'is_dir');
   $galleries = new ArrayIterator(array_reverse($galleries));
   // Reverse order so that most recent are on top

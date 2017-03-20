@@ -34,15 +34,19 @@ if ( !empty($_GET['gallery'])) {
 $gallerytitle = str_replace($spaces, " ", $gallery);
 echo '<h1 class="title"> <a href=index.php>'. ucfirst($gallerytitle) .'</a></h1>';
 echo '<div class="col-md-1 col-md-offset-1">';
-echo '<a href=# onclick="prev()"';
-echo ' class="nav-control"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>';
-echo '<br><br>';
 // Navigation
 // TODO: add zoom/fullscreen
-echo '<a href="index.php" class="nav-control"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>';
+echo '<a href="index.php" class="nav-control arrow"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>';
 echo '<br>';
 $download = 'zip.php?category='. $category .'&gallery='.$gallery;
 echo '<a href='.$download.' class="nav-control"><span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span></a>';
+echo '<br><br>';
+echo '<a href=# onclick="prev()"';
+echo ' class="nav-control"><span class="glyphicon glyphicon-chevron-left arrow" aria-hidden="true"></span></a>';
+echo '<br><br>';
+echo '<a href=# onclick="next()"';
+echo ' class="nav-control"><span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span></a>';
+echo '<br><br>';
 echo '</div>';
 //if(null==$gallery or null==$category) {
 //    echo 'ERROR: gallery and/or category parameters not specified.';
@@ -60,9 +64,6 @@ echo '<br><div class="image-title">' . $title . '</div>';
 echo '</div>'; // Col
 // Next Picture
 echo '<div class="col-md-1 text-right" style="z-index:100">';
-echo '<a href=# onclick="next()"';
-echo ' class="nav-control"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>';
-echo '<br><br>';
 echo '<img src="loading.gif" style="display:none;"; id="loading" alt="" width="auto" height="auto" >';
 echo '  </div>'; // Col
 echo '</div>'; //<!-- Row -->
@@ -73,10 +74,10 @@ foreach($thumbnails as $key=>$val) {
         echo '</div>';
         echo '<div class="row" style="margin-top:5%;">';
     }
-    echo '<div class="col-md-2 thmb" >';
+    echo '<div class="col-md-2" >';
     // echo '>';
     // Thumbnail should only be visible if...
-    echo '  <img src="'.$val.'"  id="thumbnail-'.$key;
+    echo '  <img src="'.$val.'"  class="thmb" id="thumbnail-'.$key;
     echo '" alt="" width="auto" height="auto" onclick="getImage('. $key .')"';
     echo ' class="img-responsive center-block" >';
     echo '</div>';// col
@@ -122,20 +123,11 @@ function getImage(idx) {
             document.getElementById("image").src = this.responseText;
             document.getElementById("loading").display = "none";
             index = idx; // when called from thumbnail tabs
-            // var thumbs = document.getElementsByClassName("thmb");
-            // // only show some thumbnails
-            // // TODO: make wrap
-            // if (idx % 12 == 0 || idx == thumbs.length || idx == -1){
-            //     for (var i = 0; i < thumbs.length; i++) {
-            //         if (i < idx-3 || i > idx+12) {
-            //             console.log("less or more", i, idx);
-            //             //thumbs[i].style.display = "none";
-            //         } else {
-            //             console.log("just right", i, idx);
-            //             //thumbs[i].style.display = "block";
-            //         }
-            //     }
-            // }
+            var thumbs = document.getElementsByClassName("thmb");
+            for (var i = 0; i < thumbs.length; i++) {
+                thumbs[i].style.boxShadow = "";
+            }
+            thumbs[idx].style.boxShadow = "inset 0 0 1em black, 0 0 1em white";
         }
     };
         xmlhttp.open("GET","<?php echo $src ?>" + idx, true);
