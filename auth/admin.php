@@ -74,7 +74,7 @@ function getCC(){
       <h1>Create Category</h1>
       <form action="../rest/create_category.php" method="post" enctype="multipart/form-data" id="catform">
         <label for="photos">Gallery : </label>
-        <input class="form-control" type="text" name="category" placeholder="Category Name - Lower Case, No Spaces"><br>
+        <input class="form-control" type="text" name="category" placeholder="Category Name"><br>
         <input class="btn btn-success" type="submit" value="Create Category">
       </form>
     </div>
@@ -95,7 +95,7 @@ function getCC(){
             echo '        <label for="dirname">Gallery : </label>';
           ?>
         <input class="form-control" type="text" name="gallery"
-        placeholder="Gallery Name - Lower Case, No Spaces">
+        placeholder="Gallery Name">
         <br>
         <input class="btn btn-success" type="submit" value="Create Gallery">
       </form>
