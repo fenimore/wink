@@ -32,7 +32,7 @@
 
 <footer class="footer">
   <div class="container">
-    <p class="text-muted"><a href="http://another.workingagenda.com">Fenimore Love</a> | <a href=auth/login.php><span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span></a> | <a href="https://github.com/polypmer/wink">Source Code</a></p>
+    <p class="text-muted"><a href="index.php">Index</a> | <a href=auth/login.php><span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span></a> | <a href="https://github.com/polypmer/wink">Source Code</a></p>
   </div>
 </footer>
 

@@ -87,6 +87,11 @@ echo '</div>'; // Row
 ?>
 
 </div><!-- Container -->
+<footer class="footer">
+  <div class="container">
+    <p class="text-muted"><a href="about.php">Fenimore Love</a> | <a href=auth/login.php><span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span></a> | <a href="https://github.com/polypmer/wink">Source Code</a></p>
+  </div>
+</footer>
 
 <script type="text/javascript">
       var index = 0;
