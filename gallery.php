@@ -59,7 +59,7 @@ $src = 'view.php?category=' . $category . '&gallery=' . $gallery . '&index=';
 $title = str_replace($spaces, " ", $info['filename']);
 $size = sizeof($images);
 echo '<div class="col-md-8">';
-echo '<img src="#" id="image" alt="" width="auto" height="auto" class="img-responsive center-block" >';
+echo '<img src="#" id="image" alt="" width="auto" height="400px" class="img-responsive center-block" >';
 echo '<br><div class="image-title">' . $title . '</div>';
 echo '</div>'; // Col
 // Next Picture
