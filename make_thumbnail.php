@@ -35,7 +35,7 @@ if (file_exists($thumbpath) && $overwrite != 'true'){
     $status = $status . '<h2>gallery: '.basename($gallery).' Already Exists</h2>';
     continue;
 }
-    mkdir($thumbpath, 0777, true);
+    mkdir($thumbpath, 0755, true);
     $status = $status . '<h2>gallery: '.basename($gallery).'</h2>';
     foreach($images as $image) {
         $info = pathinfo($image);

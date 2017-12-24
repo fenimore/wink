@@ -30,7 +30,7 @@ $categories = array_filter(glob('media/*'), 'is_dir');
 foreach($categories as $category){
   $cat = substr($category, 6);
   echo  $cat; // category header, make h3???
-  echo "<br><small>albums</small>";
+  echo "<br>";
   $galleries = array_filter(glob($category . '/*'), 'is_dir');
   $galleries = new ArrayIterator(array_reverse($galleries));
   // Reverse order so that most recent are on top
@@ -39,9 +39,9 @@ foreach($categories as $category){
   foreach($galleries as $gallery){
     $gall = substr($gallery, strlen($category) + 1); // strip path
     $gallerytitle = str_replace($spaces, " ", $gall); // - and _ are spaces
-    echo '<li><a href=gallery.php?category=' . $cat . '&gallery='.$gall.'>';
+    echo '<li>';
     echo '<span class="glyphicon glyphicon-th-large" aria-hidden="true">';
-    echo '</span></a> | <a href=gallery.php?category=' . $cat;
+    echo '</span> | <a href=gallery.php?category=' . $cat;
     echo '&gallery=' . $gall .' >';
     echo ucfirst($gallerytitle) .' </a></li>'; // Capitalize the Gallery?
   }
