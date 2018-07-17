@@ -1,10 +1,11 @@
-<?php 
+<?php
 session_start();
 if(isset($_SESSION['loggedin'])){
-   header("Location:admin.php");
+    header("Location:index.php" );
 } else {
     echo "Enter Password below";
 }
+$redirect = htmlspecialchars($_GET["redirect"]);
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +32,9 @@ if(isset($_SESSION['loggedin'])){
         <div class=form-group">
         <label for="pssword" style="display:none;">Password: </label>
         <input class="pssword form-control" type="password" name="password" autofocus>
+
+        <label for="redirect" style="display:none;"></label>
+        <input style="display:none" class="form-control" type="text" name="redirect" value="<?php echo $redirect; ?>">
         <button class="pssword btn btn-default" type="submit">login
         </button>
         </div>
