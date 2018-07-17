@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(isset($_SESSION['loggedin'])){
-    header("Location:index.php" );
+    header("Location:../index.php" );
 } else {
     echo "Enter Password below";
 }

@@ -33,7 +33,8 @@ if ( !empty($_GET['gallery'])) {
 }
 $gallerytitle = str_replace($spaces, " ", $gallery);
 echo '<h1 class="title"> <a href=index.php>'. ucfirst($gallerytitle) .'</a></h1>';
-echo '<div class="col-md-1 col-md-offset-1">';
+echo '<div class="col-md-1">';
+// NOTE: APOLOGIZES FUTURE SELF FOR USING ECHO IN SUCH A FASHION :(
 // Navigation
 // TODO: add zoom/fullscreen
 echo '<a href="index.php" class="nav-control arrow"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>';
@@ -58,8 +59,8 @@ $thumbnails = glob($path.'thumbnails/'."*.{[jJ][pP][gG],gif,jpeg,svg,bmp,png}", 
 $src = 'view.php?category=' . $category . '&gallery=' . $gallery . '&index=';
 $title = str_replace($spaces, " ", $info['filename']);
 $size = sizeof($images);
-echo '<div class="col-md-8">';
-echo '<img src="#" id="image" alt="" width="auto" height="400px" class="img-responsive center-block" >';
+echo '<div class="col-md-11">';
+echo '<img src="#" id="image" alt="" width="auto" class="img-responsive center-block" >';
 echo '<br><div class="image-title">' . $title . '</div>';
 echo '</div>'; // Col
 // Next Picture
