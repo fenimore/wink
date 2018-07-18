@@ -5,6 +5,8 @@ if ( !empty($_POST) ) {
     extract($_POST); //What even does this doo...
     $password = $_POST['password'];
     $redirect = $_POST['redirect'];
+
+    echo $redirect;
     // tmp password is "Hello"
     // Put hashed Pass here
     // Don't check this into git
@@ -19,6 +21,4 @@ if ( !empty($_POST) ) {
       die();
     }
 }
-
-
 ?>
