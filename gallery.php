@@ -1,19 +1,19 @@
 <?php
-session_start();
+// session_start();
 
-if(!isset($_SESSION['loggedin'])){
-    if ( !empty($_GET['gallery'])) {
-        $gallery = $_REQUEST['gallery'];
-        $category = $_REQUEST['category'];
-        header("Location:auth/login.php?redirect=../gallery.php?category=" . $category . "&gallery=" . $gallery);
-        die();
-    } else {
-        header("Location:auth/login.php?redirect=../index.php");
-        die();
-    }
-} else {
-    echo "";
-}
+// if(!isset($_SESSION['loggedin'])){
+//     if ( !empty($_GET['gallery'])) {
+//         $gallery = $_REQUEST['gallery'];
+//         $category = $_REQUEST['category'];
+//         header("Location:auth/login.php?redirect=../gallery.php?category=" . $category . "&gallery=" . $gallery);
+//         die();
+//     } else {
+//         header("Location:auth/login.php?redirect=../index.php");
+//         die();
+//     }
+// } else {
+//     echo "";
+// }
 ?>
 
 <!DOCTYPE html>
