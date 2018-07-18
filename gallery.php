@@ -5,7 +5,7 @@ if(!isset($_SESSION['loggedin'])){
     if ( !empty($_GET['gallery'])) {
         $gallery = $_REQUEST['gallery'];
         $category = $_REQUEST['category'];
-        header("Location:auth/login.php?redirect=../gallery.php?gallery=".$gallery."&category=".$category);
+        header("Location:auth/login.php?redirect=../gallery.php?gallery=" . $gallery . "&category=" . $category);
         die();
     } else {
         header("Location:auth/login.php?redirect=../index.php");
