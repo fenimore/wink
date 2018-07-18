@@ -1,3 +1,13 @@
+<?php
+session_start();
+if(!isset($_SESSION['loggedin'])){
+    header("Location:login.php?redirect=index.php");
+    die();
+} else {
+    echo "";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
       <head>
@@ -40,7 +50,7 @@ echo '<div class="col-md-1">';
 echo '<a href="index.php" class="nav-control arrow"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>';
 echo '<br>';
 $download = 'zip.php?category='. $category .'&gallery='.$gallery;
-echo '<a href='.$download.' class="nav-control"><span tooltiptext="Download" class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span></a>';
+echo '<a href='.$download.' class="nav-control"><span title="Download" class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span></a>';
 echo '<br><br>';
 echo '<a href=# onclick="prev()"';
 echo ' class="nav-control"><span class="glyphicon glyphicon-chevron-left arrow" aria-hidden="true"></span></a>';
