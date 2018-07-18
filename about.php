@@ -24,7 +24,7 @@
     <div class="col-md-12">
       <h1>Fenimore Love's Photography</h1>
         <p>
-        This website hosts some of the photographs I've taken during the last few years. You can find more information about me on my website. Which I don't current have. :)
+        This website hosts some of the photographs I've taken during the last few years. You can find more information about me on my website: https://timenotclocks.com :)
         </p>
     </div>
   </div>
@@ -32,7 +32,7 @@
 
 <footer class="footer">
   <div class="container">
-    <p class="text-muted"><a href="index.php">Index</a> | <a href=auth/login.php><span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span></a> | <a href="https://github.com/polypmer/wink">Source Code</a></p>
+    <p class="text-muted"><a href="index.php">Index</a> | <a href=auth/login.php><span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span></a> | <a href="https://github.com/fenimore/wink">Source Code</a></p>
   </div>
 </footer>
 
