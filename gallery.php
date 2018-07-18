@@ -1,8 +1,16 @@
 <?php
 session_start();
+
 if(!isset($_SESSION['loggedin'])){
-    header("Location:auth/login.php?redirect=index.php");
-    die();
+    if ( !empty($_GET['gallery'])) {
+        $gallery = $_REQUEST['gallery'];
+        $category = $_REQUEST['category'];
+        header("Location:auth/login.php?redirect=../gallery.php?gallery=".$gallery."&category=".$category);
+        die();
+    } else {
+        header("Location:auth/login.php?redirect=../index.php");
+        die();
+    }
 } else {
     echo "";
 }
