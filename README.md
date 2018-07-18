@@ -46,7 +46,7 @@ The categories and galleries are directories, with _ and - replaced by spaces. T
 
 Uploading through php can be a bit slow (this can be changed by configuring the server php init file). Using a FTP client might be much faster.
 
-I recommend [bimp](http://www.alessandrofrancesconi.it/projects/bimp/) for using gimp to **compress images in batches**. Upload a directory of photographs into the media folder, and it will appear on the index of galleries.
+I recommend [bimp](https://www.alessandrofrancesconi.it/projects/bimp/) for using gimp to **compress images in batches**. Upload a directory of photographs into the media folder, and it will appear on the index of galleries.
 
 ### Supported Extensions
 This PHP glob only reads file extensions in lower case, included is a bash script which automatically changes file extensions to lower case. `cd` into the directory with such extensions, and run, `sh lower_case.sh`:

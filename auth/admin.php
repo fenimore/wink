@@ -1,9 +1,10 @@
 <?php
 session_start();
 if(!isset($_SESSION['loggedin'])){
-   header("Location:login.php");
+   header("Location:login.php?redirect=admin.php");
+   die();
 } else {
-    echo "welcome";
+    echo "";
 }
 
 $categories = array_filter(glob('../media/*'), 'is_dir');
