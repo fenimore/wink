@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['loggedin'])){
-    header("Location:login.php?redirect=index.php");
+    header("Location:auth/login.php?redirect=index.php");
     die();
 } else {
     echo "";
