@@ -2,12 +2,13 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-if(isset($_SESSION['visitor']) || isset($_SESSION['admin'])){
-    header("Location:index.php" );
-}
-
 $redirect = htmlspecialchars($_GET["redirect"]);
 $role = htmlspecialchars($_GET["role"]);
+
+$visitor_logged_in = (isset($_SESSION['visitor']) && $role != "admin");
+if( $visitor_logged_in || isset($_SESSION['admin'])){
+    header("Location:../index.php" );
+}
 ?>
 
 <!DOCTYPE html>

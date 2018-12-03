@@ -7,13 +7,13 @@ if ( !empty($_GET['gallery']) && !empty($_GET['category'])) {
     $gallery = $_GET['gallery'];
     $category = $_GET['category'];
 } else {
-    header("Location:auth/login.php?redirect=../gallery.php?category=" . $category . "&gallery=" . $gallery);
+    header("Location:index.php");
     die();
 }
 
 
-if(!isset($_SESSION['visitor']) || !isset($_SESSION['admin'])){
-    header("Location:auth/login.php?redirect=../gallery.php?category=" . $category . "&gallery=" . $gallery);
+if(!isset($_SESSION['visitor']) && !isset($_SESSION['admin'])){
+    header("Location:auth/login.php?role=visitor&redirect=../gallery.php?category=" . $category . "&gallery=" . $gallery);
     die();
 }
 ?>

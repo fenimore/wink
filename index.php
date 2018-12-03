@@ -2,8 +2,8 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-if(!isset($_SESSION['visitor']) || !isset($_SESSION['admin'])){
-    header("Location:auth/access_login.php?role=visitor&redirect=index.php");
+if(!isset($_SESSION['visitor']) && !isset($_SESSION['admin'])){
+    header("Location:auth/login.php?role=visitor&redirect=../index.php");
     die();
 }
 ?>
@@ -39,7 +39,7 @@ $categories = array_filter(glob('media/*'), 'is_dir');
 foreach($categories as $category){
   $cat = substr($category, 6);
   $catescaped = urlencode($cat);
-  echo  $cat; // category header, make h3???
+  echo  $catescaped; // category header, make h3???
   echo "<br>";
   $galleries = array_filter(glob($category . '/*'), 'is_dir');
   $galleries = new ArrayIterator(array_reverse($galleries));

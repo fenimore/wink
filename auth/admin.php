@@ -2,8 +2,8 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-if(!isset($_SESSION['loggedin'])){
-    header("Location:login.php?redirect=admin.php");
+if(!isset($_SESSION['admin'])){
+    header("Location:login.php?redirect=admin.php&role=admin");
     die();
 }
 
@@ -61,7 +61,7 @@ function getCC(){
   <div class="row" style="margin-top:5%">
     <div class="col-md-4" style="display:none">
         <ul class="list-unstyled">
-            THIS DOESN'T EVEN WORK
+                 THIS DOESN'T EVEN WORK
           <li><a href=# onclick="getCC()">Create Category</a></li>
           <li><a href=# onclick="getCG">Create Gallery</a></li>
           <li><a href=# onclick="getUP">Upload Photography</a></li>

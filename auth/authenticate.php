@@ -8,9 +8,9 @@ if ( !empty($_POST) ) {
     extract($_POST); // but why?
     $password = $_POST['password'];
     $redirect = $_POST['redirect'];
-    $permission = $_POST['permission'];
+    $role = $_POST['role'];
 
-    switch ($permission) {
+    switch ($role) {
     case "admin":
         $target_password = $ini["admin_pass"];
         break;
@@ -23,7 +23,7 @@ if ( !empty($_POST) ) {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
-        $_SESSION[$permission] = true;
+        $_SESSION[$role] = true;
         header('Location: ' . $redirect);
         die();
     } else {
