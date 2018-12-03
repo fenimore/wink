@@ -29,6 +29,7 @@ $spaces = array("-", "_");
 $categories = array_filter(glob('media/*'), 'is_dir');
 foreach($categories as $category){
   $cat = substr($category, 6);
+  $catescaped = urlencode($cat);
   echo  $cat; // category header, make h3???
   echo "<br>";
   $galleries = array_filter(glob($category . '/*'), 'is_dir');
@@ -38,11 +39,12 @@ foreach($categories as $category){
   echo '<ul class="photo-index list-unstyled">';
   foreach($galleries as $gallery){
     $gall = substr($gallery, strlen($category) + 1); // strip path
+    $gallescaped = urlencode($gall);
     $gallerytitle = str_replace($spaces, " ", $gall); // - and _ are spaces
     echo '<li>';
     echo '<span class="glyphicon glyphicon-th-large" aria-hidden="true">';
-    echo '</span> | <a href=gallery.php?category=' . $cat;
-    echo '&gallery=' . $gall .' >';
+    echo '</span> | <a href=gallery.php?category=' . $catescaped;
+    echo '&gallery=' . $gallescaped .' >';
     echo ucfirst($gallerytitle) .' </a></li>'; // Capitalize the Gallery?
   }
   echo '</ul>';
