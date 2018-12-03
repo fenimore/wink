@@ -1,19 +1,21 @@
 <?php
-// session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
-// if(!isset($_SESSION['loggedin'])){
-//     if ( !empty($_GET['gallery'])) {
-//         $gallery = $_REQUEST['gallery'];
-//         $category = $_REQUEST['category'];
-//         header("Location:auth/login.php?redirect=../gallery.php?category=" . $category . "&gallery=" . $gallery);
-//         die();
-//     } else {
-//         header("Location:auth/login.php?redirect=../index.php");
-//         die();
-//     }
-// } else {
-//     echo "";
-// }
+if ( !empty($_GET['gallery']) && !empty($_GET['category'])) {
+    $gallery = $_GET['gallery'];
+    $category = $_GET['category'];
+} else {
+    header("Location:auth/login.php?redirect=../gallery.php?category=" . $category . "&gallery=" . $gallery);
+    die();
+}
+
+
+if(!isset($_SESSION['visitor']) || !isset($_SESSION['admin'])){
+    header("Location:auth/login.php?redirect=../gallery.php?category=" . $category . "&gallery=" . $gallery);
+    die();
+}
 ?>
 
 <!DOCTYPE html>
@@ -45,10 +47,7 @@
 <?php
 $gallery = null;
 $spaces = array("-", "_");
-if ( !empty($_GET['gallery'])) {
-    $gallery = $_REQUEST['gallery'];
-    $category = $_REQUEST['category'];
-}
+
 $gallerytitle = str_replace($spaces, " ", $gallery);
 echo '<h1 class="title"> <a href=index.php>'. ucfirst($gallerytitle) .'</a></h1>';
 echo '<div class="col-md-1">';

@@ -1,24 +1,33 @@
 <?php
+// authenticate.php -- compared to access.php
 if ( !empty($_POST) ) {
-    $error=array();// I should use this?
+    $error=array();// TODO: I should use this?
 
-    extract($_POST); //What even does this doo...
+    $ini = parse_ini_file('../wink.ini');
+
+    extract($_POST); // but why?
     $password = $_POST['password'];
     $redirect = $_POST['redirect'];
+    $permission = $_POST['permission'];
 
-    echo $redirect;
-    // tmp password is "Hello"
-    // Put hashed Pass here
-    // Don't check this into git
-    if( md5($password) == "907e131eb3bf6f21292fa1ed16e8b60c"){
-      session_start();
-      $_SESSION['loggedin'] = true;
-      header('Location: ' . $redirect);
-      die();
+    switch ($permission) {
+    case "admin":
+        $target_password = $ini["admin_pass"];
+        break;
+    case "visitor":
+        $target_password = $ini["visitor_pass"];
+        break;
+    }
+    // Admin access
+    if( sha1($password) == $target_password){
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        $_SESSION[$permission] = true;
+        header('Location: ' . $redirect);
+        die();
     } else {
-      header('Location: login.php');
-      echo 'Wrong Password';
-      die();
+        echo 'Wrong Password';
     }
 }
 ?>

@@ -1,11 +1,13 @@
 <?php
-session_start();
-if(isset($_SESSION['loggedin'])){
-    header("Location:../index.php" );
-} else {
-    echo "Enter Password below";
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
 }
+if(isset($_SESSION['visitor']) || isset($_SESSION['admin'])){
+    header("Location:index.php" );
+}
+
 $redirect = htmlspecialchars($_GET["redirect"]);
+$role = htmlspecialchars($_GET["role"]);
 ?>
 
 <!DOCTYPE html>
@@ -27,12 +29,15 @@ $redirect = htmlspecialchars($_GET["redirect"]);
 
 <div class="container">
   <div class="row">
+            Enter password below
     <div class="col-md-4" style="margin-top:20%">
       <form class="form-inline" action="authenticate.php" method="post">
         <div class=form-group">
         <label for="pssword" style="display:none;">Password: </label>
         <input class="pssword form-control" type="password" name="password" autofocus>
 
+        <label for="role" style="display:none;"></label>
+        <input style="display:none" class="form-control" type="text" name="role" value="<?php echo $role; ?>">
         <label for="redirect" style="display:none;"></label>
         <input style="display:none" class="form-control" type="text" name="redirect" value="<?php echo $redirect; ?>">
         <button class="pssword btn btn-default" type="submit">login

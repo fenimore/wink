@@ -1,3 +1,12 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+if(!isset($_SESSION['visitor']) || !isset($_SESSION['admin'])){
+    header("Location:auth/access_login.php?role=visitor&redirect=index.php");
+    die();
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,7 +65,8 @@ foreach($categories as $category){
 
 <footer class="footer">
   <div class="container">
-    <p class="text-muted"><a href="about.php">Fenimore Love</a> | <a href=auth/admin.php><span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span></a> | <a href="https://github.com/fenimore/wink">Source Code</a></p>
+    <p class="text-muted">
+            <a href="about.php">Fenimore Love</a> | <a href=auth/admin.php><span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span></a> | <a href="https://github.com/fenimore/wink">Source Code</a></p>
   </div>
 </footer>
 
