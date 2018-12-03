@@ -30,10 +30,13 @@ if( $visitor_logged_in || isset($_SESSION['admin'])){
 
 <div class="container">
   <div class="row">
-            Enter password below
     <div class="col-md-4" style="margin-top:20%">
       <form class="form-inline" action="authenticate.php" method="post">
         <div class=form-group">
+        enter your password below as a <?php echo $role; ?>
+        <br>
+        entrez votre mot-de-passe comme un <?php echo $role; ?>
+        <br>
         <label for="pssword" style="display:none;">Password: </label>
         <input class="pssword form-control" type="password" name="password" autofocus>
 
@@ -50,6 +53,7 @@ if( $visitor_logged_in || isset($_SESSION['admin'])){
   <div class="row">
   <hr>
   <a href=../index.php><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Index</a>
+  <a href='login.php?role=admin&redirect=<?php echo $redirect;?>'><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Admin</a>
   </div>
 </div>
 </body>

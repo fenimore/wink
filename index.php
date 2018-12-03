@@ -6,6 +6,8 @@ if(!isset($_SESSION['visitor']) && !isset($_SESSION['admin'])){
     header("Location:auth/login.php?role=visitor&redirect=../index.php");
     die();
 }
+$ini = parse_ini_file('wink.ini');
+$publisher = $ini["publisher"];
 ?>
 <!DOCTYPE html>
 <html>
@@ -68,7 +70,8 @@ foreach($categories as $category){
 <footer class="footer">
   <div class="container">
     <p class="text-muted">
-            <a href="about.php">Fenimore Love</a> | <a href=auth/admin.php><span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span></a> | <a href="https://github.com/fenimore/wink">Source Code</a></p>
+            <a href="about.php"><?php echo $publisher; ?></a> | <a href=auth/logout.php>Logout</a> | <a href=auth/admin.php><span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span></a> | <a href="https://github.com/fenimore/wink">Source Code</a>
+    </p>
   </div>
 </footer>
 

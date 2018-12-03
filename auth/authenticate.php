@@ -18,6 +18,7 @@ if ( !empty($_POST) ) {
         $target_password = $ini["visitor_pass"];
         break;
     }
+
     // Admin access
     if( sha1($password) == $target_password){
         if (session_status() == PHP_SESSION_NONE) {
@@ -27,7 +28,7 @@ if ( !empty($_POST) ) {
         header('Location: ' . $redirect);
         die();
     } else {
-        echo 'Wrong Password';
+        header('Location: ' . $redirect);
     }
 }
 ?>

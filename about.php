@@ -1,3 +1,15 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+if(!isset($_SESSION['visitor']) && !isset($_SESSION['admin'])){
+    header("Location:auth/login.php?role=visitor&redirect=../index.php");
+    die();
+}
+$ini = parse_ini_file('wink.ini');
+$publisher = $ini["publisher"];
+$site = $ini["publisher_website"];
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,9 +34,10 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h1>Fenimore Love's Photography</h1>
+
+      <h1><?php echo ucwords($publisher); ?>'s Photography</h1>
         <p>
-        This website hosts some of the photographs I've taken during the last few years. You can find more information about me on my website: https://timenotclocks.com :)
+        This website hosts some of the photographs I've taken during the last few years. You can find more information about me on my website: <?php echo $site; ?> :)
         </p>
     </div>
   </div>
