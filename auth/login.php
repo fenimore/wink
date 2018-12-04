@@ -33,10 +33,13 @@ if( $visitor_logged_in || isset($_SESSION['admin'])){
     <div class="col-md-4" style="margin-top:20%">
       <form class="form-inline" action="authenticate.php" method="post">
         <div class=form-group">
-        enter your password below as a <?php echo $role; ?>
+        Accessing wink with the role <span class="role"><?php echo $role; ?></span>
         <br>
-        entrez votre mot-de-passe comme un <?php echo $role; ?>
+        Enter your password:
+        <br><small>Entrez votre mot-de-passe:</small>
         <br>
+        <br>
+
         <label for="pssword" style="display:none;">Password: </label>
         <input class="pssword form-control" type="password" name="password" autofocus>
 
@@ -56,5 +59,9 @@ if( $visitor_logged_in || isset($_SESSION['admin'])){
   <a href='login.php?role=admin&redirect=<?php echo $redirect;?>'><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Admin</a>
   </div>
 </div>
+<?php
+  $root = realpath($_SERVER["DOCUMENT_ROOT"]);
+  include "$root/footer.php";
+?>
 </body>
 </html>

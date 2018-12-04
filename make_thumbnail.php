@@ -1,11 +1,18 @@
 <?php
-session_start();
-if(!isset($_SESSION['loggedin'])){
-    header("Location:login.php");
-    return;
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
 }
-// https://davidwalsh.name/create-image-thumbnail-php
+
+if(!isset($_SESSION['admin'])){
+    header("Location:auth/login.php?role=visitor&redirect=../gallery.php?category=" . $category . "&gallery=" . $gallery);
+    die();
+}
+
 function make_thumb($src, $dest, $desired_width) {
+    // This code requires install php-gd
+    // and in arch linux, it require commenting out the extension
+    // in /etc/php/php.ini
+    // https://davidwalsh.name/create-image-thumbnail-php
     /* read the source image */
     $source_image = imagecreatefromjpeg($src);
     $width = imagesx($source_image);
@@ -20,33 +27,33 @@ function make_thumb($src, $dest, $desired_width) {
     imagejpeg($virtual_image, $dest);
 }
 
-echo '<h1>Making thumbnails for selected category</h1>';
-
-$category = $_REQUEST['category'];
-$overwrite = $_REQUEST['over'];
+$category = $_GET['category'];
+$overwrite = $_GET['overwrite'];
 $galleries = glob('media/'.$category.'/*');
-$status = '';
+$status = '<ul>';
 
 foreach($galleries as $gallery) {
     $path = 'media/'. $category . '/' . basename($gallery) . '/';
     $images = glob($path."*.{[jJ][pP][gG],gif,jpeg,svg,bmp,png}", GLOB_BRACE);
     $thumbpath = $path . 'thumbnails/';
-if (file_exists($thumbpath) && $overwrite != 'true'){
-    $status = $status . '<h2>gallery: '.basename($gallery).' Already Exists</h2>';
-    continue;
-}
+    $thumbnails = glob($thumbpath."*.{[jJ][pP][gG],gif,jpeg,svg,bmp,png}", GLOB_BRACE);
+
+    $gallery_exists = (file_exists($thumbpath) && (count($thumbnails) > 0));
+    if ($gallery_exists && $overwrite != 'true'){
+      $status .= '<li>' . basename($gallery) . ' already exists</li>';
+      continue;
+    }
     mkdir($thumbpath, 0755, true);
-    $status = $status . '<h2>gallery: '.basename($gallery).'</h2>';
+    $status .= '<li>' . basename($gallery) . ': ' . count($images) . ' thumbnails created</li>';
     foreach($images as $image) {
         $info = pathinfo($image);
         $thumb = $thumbpath.'thmb-' . $info['filename'] . '.' . $info['extension'];
          make_thumb($image, $thumb, 150);
     }
 }
+$status = $status . '</ul>';
 
-?>
-
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html>
 <head>
 <title>Wink</title>
@@ -64,8 +71,12 @@ if (file_exists($thumbpath) && $overwrite != 'true'){
     <link rel="stylesheet" href="css/style.css" type="text/css" media="screen"/>
     </head>
     <body>
-    <?php echo $status; ?>
-    <a href="auth/admin.php">Return to Admin</a><br>
-    <a href="index.php">Return to Index</a>
+        <div class="container">
+          <h1>Creating Thumbnails for selection</h1>
+          <a href="auth/admin.php">Return to Admin Panel</a><br>
+          <a href="index.php">Return to Index Page</a>
+          <hr>
+          <?php echo $status; ?>
+        </div>
     </body>
     </html>

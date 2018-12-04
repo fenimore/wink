@@ -13,11 +13,9 @@ a:hover {
   color: #00CC99 ;
   text-decoration: none;
 }
-
-#image {
-
+.role {
+    color: #B00020;
 }
-
 .thmb {
     cursor: pointer;
 }

@@ -34,34 +34,39 @@ function getCC(){
 </head>
 <body>
 
-<div class="container">
-  <div class="row">
-    <a href=../index.php><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Index</a>
-    <a href=logout.php><span class="glyphicon glyphicon-road" aria-hidden="true"></span> Logout</a>
-    <hr>
-  </div>
-  <div class="row" style="margin-top:5%">
-            <h1>Generate Thumbnails</h1>
-            <form action="../make_thumbnail.php" id="thumbnailform" method="GET">
-            <label for="thumbs">Category : </label>
-            <select class="form-control" style="width:50%;" form="thumbnailform" name="category">
+  <div class="container">
+    <div class="row">
+      <br>
+      <a href=../index.php><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Index</a>
+      <a href=logout.php><span class="glyphicon glyphicon-road" aria-hidden="true"></span> Logout</a>
+      <hr>
+    </div>
+    <div class="row" style="margin-top:5%">
+      <h1>Generate Thumbnails</h1>
+      <p>Thumbnails are generated at the level of categories (not individual gallery/albums).</p>
+      <form action="../make_thumbnail.php" id="thumbnailform" method="GET">
+        <label for="thumbs">Category : </label>
+        <select class="form-control" style="width:50%;" form="thumbnailform" name="category">
           <?php
             foreach($categories as $category) {
               $cat = substr($category, 9);
-              echo '<option value="'.$cat.'">';
-              echo ucfirst($cat) . '</option>';
-            }
+              echo '<option value="'.$cat.'">' . ucfirst($cat) . '</option>';
+              }
           ?>
-        </select><br>
-        <input type="checkbox" name="over" value="true"> Overwrite<br>
-        <br>
-        <input class="btn btn-success" type="submit" value="Create Thumbnails">
+          </select><br>
+          <label for="overwrite">Overwrite:  </label>
+          <input type="checkbox" name="overwrite" value="false"><br>
+          <br>
+          <input class="btn btn-success" type="submit" value="Create Thumbnails">
       </form>
-  </div>
-  <div class="row" style="margin-top:5%">
-    <div class="col-md-4" style="display:none">
+    </div>
+    <hr>
+      <p>Uploading images through php (that is, HTTP) is slow and painful. It's a better idea, if you have access, to ignore these file-system crud forms in favor of directly uploading your albums using SFTP or something.</p>
+      <p>Further, the code making up the `rest` API is probably broken because I don't use it or maintain it, and permissions are likely <i>broken</i>. <strong>Proceed with caution</strong></p>
+    <hr>
+    <div class="row" style="margin-top:5%">
+      <div class="col-md-4" style="display:none">
         <ul class="list-unstyled">
-                 THIS DOESN'T EVEN WORK
           <li><a href=# onclick="getCC()">Create Category</a></li>
           <li><a href=# onclick="getCG">Create Gallery</a></li>
           <li><a href=# onclick="getUP">Upload Photography</a></li>
@@ -70,10 +75,10 @@ function getCC(){
           <li><a href=# onclick="getDG">Delete Gallery</a></li>
           <li></li>
         </ul>
-    </div>
-    <div class="col-md-4 admin-option" id="create-cat">
-      <h1>Create Category</h1>
-      <form action="../rest/create_category.php" method="post" enctype="multipart/form-data" id="catform">
+      </div>
+      <div class="col-md-4 admin-option" id="create-cat">
+        <h1>Create Category</h1>
+        <form action="../rest/create_category.php" method="post" enctype="multipart/form-data" id="catform">
         <label for="photos">Gallery : </label>
         <input class="form-control" type="text" name="category" placeholder="Category Name"><br>
         <input class="btn btn-success" type="submit" value="Create Category">
@@ -152,5 +157,9 @@ function getCC(){
     </div>
   </div>
 </div>
+<?php
+  $root = realpath($_SERVER["DOCUMENT_ROOT"]);
+  include "$root/footer.php";
+?>
 </body>
 </html>

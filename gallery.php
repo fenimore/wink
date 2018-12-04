@@ -17,7 +17,6 @@ if(!isset($_SESSION['visitor']) && !isset($_SESSION['admin'])){
     die();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
       <head>
@@ -45,14 +44,16 @@ if(!isset($_SESSION['visitor']) && !isset($_SESSION['admin'])){
 <div class="container">
   <div class="row text-center">
 <?php
-$gallery = null;
 $spaces = array("-", "_");
-
 $gallerytitle = str_replace($spaces, " ", $gallery);
 echo '<h1 class="title"> <a href=index.php>'. ucfirst($gallerytitle) .'</a></h1>';
 echo '<div class="col-md-1">';
 // NOTE: APOLOGIZES FUTURE SELF FOR USING ECHO IN SUCH A FASHION :(
-// Navigation
+
+///////////////////
+// // Navigation //
+///////////////////
+
 // TODO: add zoom/fullscreen
 echo '<a href="index.php" class="nav-control arrow"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>';
 echo '<br>';
@@ -66,26 +67,27 @@ echo '<a href=# onclick="next()"';
 echo ' class="nav-control"><span class="glyphicon glyphicon-chevron-right arrow" aria-hidden="true"></span></a>';
 echo '<br><br>';
 echo '</div>';
-//if(null==$gallery or null==$category) {
-//    echo 'ERROR: gallery and/or category parameters not specified.';
-// }
+
 $path = 'media/'. $category . '/' . $gallery . '/';
 $images = glob($path."*.{[jJ][pP][gG],gif,jpeg,svg,bmp,png}", GLOB_BRACE);
 $thumbnails = glob($path.'thumbnails/'."*.{[jJ][pP][gG],gif,jpeg,svg,bmp,png}", GLOB_BRACE);
-//z$info = pathinfo($image);
+
 $src = 'view.php?category=' . $category . '&gallery=' . $gallery . '&index=';
 $title = str_replace($spaces, " ", $info['filename']);
 $size = sizeof($images);
+
 echo '<div class="col-md-11">';
 echo '<img src="#" id="image" alt="" width="auto" class="img-responsive center-block" >';
 echo '<br><div class="image-title">' . $title . '</div>';
 echo '</div>'; // Col
+
 // Next Picture
 echo '<div class="col-md-1 text-right" style="z-index:100">';
 echo '<img src="loading.gif" style="display:none;"; id="loading" alt="" width="auto" height="auto" >';
 echo '  </div>'; // Col
 echo '</div>'; //<!-- Row -->
 echo '<div id="slider" class="row">';
+
 foreach($thumbnails as $key=>$val) {
     if ($key % 6 == 0) { // bootstrap column
         //echo ' style="display:none" ';
@@ -105,11 +107,9 @@ echo '</div>'; // Row
 ?>
 
 </div><!-- Container -->
-<footer class="footer">
-  <div class="container">
-    <p class="text-muted"><a href="about.php">Fenimore Love</a> | <a href=auth/login.php><span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span></a> | <a href="https://github.com/fenimore/wink">Source Code</a></p>
-  </div>
-</footer>
+
+
+<?php include("footer.php");?>
 
 <script type="text/javascript">
       var index = 0;

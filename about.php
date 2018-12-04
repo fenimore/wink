@@ -43,11 +43,7 @@ $site = $ini["publisher_website"];
   </div>
 </div>
 
-<footer class="footer">
-  <div class="container">
-    <p class="text-muted"><a href="index.php">Index</a> | <a href=auth/login.php><span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span></a> | <a href="https://github.com/fenimore/wink">Source Code</a></p>
-  </div>
-</footer>
+<?php include("footer.php");?>
 
 </body>
 </html>

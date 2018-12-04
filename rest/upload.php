@@ -1,6 +1,11 @@
 <?php
+// TODO: ALL THIS IS PROBABLY BROKEN
+// also uploading through PHP is slow.
+// so if you have the option... don't use this API (which is basically Filesystem crud
+
 session_start();
-if(!isset($_SESSION['loggedin'])){
+
+if(!isset($_SESSION['admin'])){
     header("Location:login.php");
     return;
 }
