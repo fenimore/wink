@@ -40,7 +40,7 @@ if( $visitor_logged_in || isset($_SESSION['admin'])){
         <br>
         <br>
 
-        <label for="pssword" style="display:none;">Password: </label>
+        <label for="password" style="display:none;">Password: </label>
         <input class="pssword form-control" type="password" name="password" autofocus>
 
         <label for="role" style="display:none;"></label>
@@ -60,8 +60,9 @@ if( $visitor_logged_in || isset($_SESSION['admin'])){
   </div>
 </div>
 <?php
-  $root = realpath($_SERVER["DOCUMENT_ROOT"]);
-  include "$root/footer.php";
+  $ini = parse_ini_file('../wink.ini');
+  $subdir = $ini["subdir"];
+  include "$subdir/footer.php";
 ?>
 </body>
 </html>
