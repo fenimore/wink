@@ -29,7 +29,7 @@ if ( !empty($_POST) ) {
         die();
     } else {
         header('Location: ' . $redirect);
-        die()
+        die();
     }
 }
 ?>

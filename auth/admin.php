@@ -158,8 +158,7 @@ function getCC(){
   </div>
 </div>
 <?php
-  $root = realpath($_SERVER["DOCUMENT_ROOT"]);
-  include "$root/footer.php";
+  include "../footer.php";
 ?>
 </body>
 </html>

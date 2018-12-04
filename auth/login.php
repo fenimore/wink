@@ -60,9 +60,7 @@ if( $visitor_logged_in || isset($_SESSION['admin'])){
   </div>
 </div>
 <?php
-  $ini = parse_ini_file('../wink.ini');
-  $subdir = $ini["subdir"];
-  include "$subdir/footer.php";
+  include "../footer.php";
 ?>
 </body>
 </html>
